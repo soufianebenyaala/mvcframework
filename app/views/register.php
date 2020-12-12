@@ -68,20 +68,7 @@
                                 ?>
                         </div>
                         
-                        <div class="form-group">
-                            <div>
-                                <label for="Insert photo">Insert photo</label>
-                            </div>
-                            <input class="form-control-file border"   type="file" name="user-photo"
-                                placeholder="Insert photo">
-                                <?php 
-                                  if(!empty($data['insert_photoError']))
-                                 { echo"<br><div class='alert alert-danger' role='alert'>
-                                   ".$data['insert_photoError']."
-                                </div>";}
-                                ?>
 
-                        </div>
                         <div class="form-group">
                             <div>
                                 <label for="Email">Email</label>

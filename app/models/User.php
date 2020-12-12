@@ -6,14 +6,13 @@ class User {
     }
 
     public function register($data) {
-        $this->db->query('INSERT INTO membre (first_name,last_name,pseudo,photo_de_profile,email,addresse,zip_code,pays,ville,telephone,mdp,sexe) 
-        VALUES(:first_name, :last_name,:pseudo,:photo_de_profile,:email,:addresse,:zip_code,:pays,:ville,:telephone,:password,:sexe)');
+        $this->db->query('INSERT INTO membre (first_name,last_name,pseudo,email,addresse,zip_code,pays,ville,telephone,mdp,sexe,verifyAccount) 
+        VALUES(:first_name, :last_name,:pseudo,:email,:addresse,:zip_code,:pays,:ville,:telephone,:password,:sexe,:verifyAccount)');
         
         //Bind values
         $this->db->bind(':first_name', $data['first_name']);
         $this->db->bind(':last_name', $data['last_name']);
         $this->db->bind(':pseudo', $data['pseudo']);
-        $this->db->bind(':photo_de_profile', $data['photo_de_profile']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':addresse', $data['addresse']);
         $this->db->bind(':zip_code', $data['zip_code']);
@@ -22,6 +21,7 @@ class User {
         $this->db->bind(':telephone', $data['telephone']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':sexe', $data['sexe']);
+        $this->db->bind(':verifyAccount',"non");
 
         //Execute function
         if ($this->db->execute()) {
@@ -49,6 +49,43 @@ class User {
             return false;
         }
     }
+    
+    public function verify_account($email){
+        $this->db->query('SELECT * FROM membre WHERE email = :email');
+
+        //Bind value
+        $this->db->bind(':email', $email);
+        
+
+        $row = $this->db->single();
+
+        $verfiy_account = $row->verifyAccount;
+        
+
+        if ($verfiy_account == "oui") {
+            
+            return true;
+        } else {
+            return false;
+        }
+    }
+        
+    public function verifyaccountgetnon(){
+        $this->db->query('UPDATE membre SET verifyAccount="oui"
+        WHERE email = :email
+        ');
+        
+        //Bind values
+
+        $this->db->bind(':email', $_SESSION['verifyAccount_email']);
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     //Find user by email. Email is passed in by the Controller.
     public function findUserByEmail($email) {
         //Prepared statement
@@ -59,9 +96,9 @@ class User {
 
         //Check if email is already registered
         if($this->db->rowCount() > 0) {
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
         }
     }
 
@@ -74,9 +111,9 @@ class User {
     
             //Check if email is already registered
             if($this->db->rowCount() > 0) {
-                return false;
-            } else {
                 return true;
+            } else {
+                return false;
             }
         }
 

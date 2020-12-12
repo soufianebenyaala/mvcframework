@@ -35,4 +35,3 @@
 </div>
 <!-- /NAVIGATION -->
 
-<?php var_dump($_SESSION); ?>

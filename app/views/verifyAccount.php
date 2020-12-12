@@ -9,7 +9,7 @@
         <div class="container">
             <!-- row -->
             <div class="row">
-                <form id="checkout-form" class="clearfix" action="<?php echo URLROOT; ?>users/login" method="POST">
+                <form id="checkout-form" class="clearfix" action="<?php echo URLROOT; ?>users/verifyaccount" method="POST">
                     <div class="col-md-8">
                         <div class="billing-details">
 
@@ -23,15 +23,15 @@
                                 </div>
                                 <input class="input" type="text" name="verification" placeholder="insert code of verification">
                                 <?php 
-                                  if(!empty($data['verificationError']))
+                                  if(!empty($data1['verificationError']))
                                  { echo"<br><div class='alert alert-danger' role='alert'>
-                                   ".$data['verificationError']."
+                                   ".$data1['verificationError']."
                                 </div>";}
                                 ?>
                             </div>
                             
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                                <button type="submit" class="btn btn-primary btn-lg">verify</button>
                             </div>
 
                         </div>

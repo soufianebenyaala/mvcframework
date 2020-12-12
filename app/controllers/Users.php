@@ -8,7 +8,7 @@ class Users extends Controller {
             'first_name' => '',
             'last_name' => '',
             'pseudo' => '',
-            'photo_de_profile' => '',
+            
             'email' => '',
             'addresse' => '',
             'zip_code' => '',
@@ -39,7 +39,7 @@ class Users extends Controller {
                 'first_name' => trim($_POST['first-name']),
                 'last_name' => trim($_POST['last-name']),
                 'pseudo' => trim($_POST['pseudo']),
-                'photo_de_profile' => trim($_POST['user-photo']),
+           
                 'email' => trim($_POST['email']),
                 'addresse' => trim($_POST['address']),
                 'zip_code' => trim($_POST['zip_code']),
@@ -52,7 +52,7 @@ class Users extends Controller {
                 'first_nameError' => '',
                 'last_nameError' => '',
                 'pseudoError' => '',
-                'insert_photoError' => '',
+               
                 'addresseError' => '',
                 'sexeError' => '',
                 'zip_codeError' => '',
@@ -61,6 +61,7 @@ class Users extends Controller {
                 'confirmPasswordError' => '',
                 'pseudoError' => '',
                 'telError' => ''
+
             ];
 
             $telValidation = "/^[0-9]*$/";
@@ -100,15 +101,7 @@ class Users extends Controller {
                 $data['sexeError'] = 'Please enter sexe.';
             }
 
-             //Validate insert photo on letters
-             if (empty($data['photo_de_profile'])) {
-                $data['insert_photoError'] = 'Please enter insert photo.';
-            } else{
-                $tab=explode('.',$data['photo_de_profile']);
-                if($tab[1] != 'jpg'){
-                    $data['insert_photoError'] = 'photo is not type jpg .';
-                }
-            }
+
 
             //Validate city on letters
              if (empty($data['ville'])) {
@@ -180,8 +173,10 @@ class Users extends Controller {
                 //Register user from model function
                 if ($this->userModel->register($data)) {
                     //Redirect to the login page
+                    $_SESSION['verifyAccount_email'] =$data['email'];
+                    $this->sendMailOfVerificationAccount($data['email']);
                    
-                    header('location: ' . URLROOT . 'verifyAccount/verifyAccount');
+                    header('location: ' . URLROOT . 'users/verifyAccount');
                     
                 } else {
                     die('Something went wrong.');
@@ -233,7 +228,15 @@ class Users extends Controller {
                 $loggedInUser = $this->userModel->login($data['email'], $data['password']);
 
                 if ($loggedInUser) {
-                    $this->createUserSession($loggedInUser);
+                    $test = $this->userModel->verify_account($data['email']);
+                    if($test){
+                        $this->createUserSession($loggedInUser);
+                    }else{
+                        $_SESSION['verifyAccount_email'] =$data['email'];
+                        $this->sendMailOfVerificationAccount($data['email']);
+                        $this->verifyaccount();
+                    }
+                   
                 } else {
                     $data['passwordError'] = 'Password or username is incorrect. Please try again.';
 
@@ -267,12 +270,64 @@ class Users extends Controller {
         header('location:' . URLROOT . 'users/login');
     }
 
-    public function verifyAccount() {
-        $this->view('verifyAccount');
 
-    }
+    
+    public function sendMailOfVerificationAccount($email) {
+        
+        $to      = $email;
+        $subject = 'verify Account';
+        $code = random_int(1000,9999);
+        $_SESSION['code']=$code;
+        $message = 'code of verification account : '.$code;
+        $headers = 'From: webmaster@example.com' . "\r\n" .
+        'Reply-To: webmaster@example.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+   
+       mail($to, $subject, $message, $headers);
+       }
+
+
+       public function verifyaccount() {
+        $data1 = [
+            'verifyaccount'=> '',
+            'email'=> '',
+            'verificationError' => ''
+        ];
+        
+       
+        //Check for post
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['verification'])) {
+            //Sanitize post data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            
+
+            $data1 = [
+                'verifyaccount'=> $_POST['verification'],
+                'email'=> $_SESSION['verifyAccount_email'],
+                'verificationError' => ''
+            ];
+
+            if($data1['verifyaccount'] == $_SESSION['code'] ){
+                if( $this->userModel->verifyaccountgetnon()){
+                    unset($_SESSION['code']);
+                    unset($_SESSION['verifyAccount_email']);
+                    $this->view('login');
+                }  
+
+            }else{
+                $data1['verificationError'] = ' invalid verification account ';
+                
+                $this->view('verifyaccount', $data1);
+            }
+        }
+        $this->view('verifyaccount', $data1);
 
     
 }
+
+}
+
+    
+
 
 ?>
