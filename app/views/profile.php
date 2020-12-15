@@ -23,14 +23,14 @@
 
                     <h2 class="product-name"><?= $data['pseudo']; ?></h2>
                     <div class="product-body">
-                        <p style="font-size: 15pt;"><strong>First Name :</strong><?php echo $data['first_name']; ?></p>
-                        <p style="font-size: 15pt;"><strong>Last Name :</strong><?php echo $data['last_name']; ?> </p>
-                        <p style="font-size: 15pt;"><strong>Email :</strong> <?php echo $data['email']; ?></p>
-                        <p style="font-size: 15pt;"><strong>Address :</strong> <?php echo $data['addresse']; ?></p>
-                        <p style="font-size: 15pt;"><strong>City :</strong> <?php echo $data['ville']; ?> </p>
-                        <p style="font-size: 15pt;"><strong>Country :</strong> <?php echo $data['pays']; ?> </p>
-                        <p style="font-size: 15pt;"><strong>ZIP Code :</strong><?php echo $data['zip_code']; ?> </p>
-                        <p style="font-size: 15pt;"><strong>Telephone :</strong> <?php echo $data['telephone']; ?></p>
+                        <p style="font-size: 15pt;"><strong>First Name : </strong><?php echo $data['first_name']; ?></p>
+                        <p style="font-size: 15pt;"><strong>Last Name : </strong><?php echo $data['last_name']; ?> </p>
+                        <p style="font-size: 15pt;"><strong>Email : </strong> <?php echo $data['email']; ?></p>
+                        <p style="font-size: 15pt;"><strong>Address : </strong> <?php echo $data['addresse']; ?></p>
+                        <p style="font-size: 15pt;"><strong>City : </strong> <?php echo $data['ville']; ?> </p>
+                        <p style="font-size: 15pt;"><strong>Country : </strong> <?php echo $data['pays']; ?> </p>
+                        <p style="font-size: 15pt;"><strong>ZIP Code : </strong><?php echo $data['zip_code']; ?> </p>
+                        <p style="font-size: 15pt;"><strong>Telephone : </strong> <?php echo $data['telephone']; ?></p>
 
                     </div>
                 </div>

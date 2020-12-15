@@ -12,7 +12,7 @@
             <div id="home-slick">
                 <!-- banner -->
                 <div class="banner banner-1">
-                    <img src="./img/reunion-02.jpg" alt="">
+                    <img src="<?php echo URLROOT; ?>public/img/reunion-02.png" alt="">
                     <div class="banner-caption text-center">
                         <h1>meeting room</h1>
                         <h3 class="white-color font-weak">Up to 50% Discount</h3>
@@ -23,7 +23,7 @@
 
                 <!-- banner -->
                 <div class="banner banner-1">
-                    <img src="./img/bureau-01.jpg" class="img-" alt="">
+                    <img src="<?php echo URLROOT; ?>public/img/bureau-01.png" class="img-" alt="">
                     <div class="banner-caption">
                         <h1 class="primary-color">office room<br><span class="white-color font-weak">Up to 50% OFF</span>
                         </h1>
@@ -34,7 +34,7 @@
 
                 <!-- banner -->
                 <div class="banner banner-1">
-                    <img src="./img/formation-01.jpg" alt="">
+                    <img src="<?php echo URLROOT; ?>public/img/formation-01.png" alt="">
                     <div class="banner-caption">
                         <h1 class="white-color">training room</h1>
                         <button class="primary-btn">booking Now</button>
@@ -75,6 +75,7 @@
                 <div class="row">
                     <div id="product-slick-1" class="product-slick">
                         <!-- Product Single -->
+                      
                         <div class="product product-single">
                             <div class="product-thumb">
                                 <div class="product-label">
@@ -82,14 +83,51 @@
 
                                 </div>
                                 <ul class="product-countdown">
-								    <li><span style="margin-bottom: -17px;"><img src="img/date.png" ></span></li>
+								    <li><span style="margin-bottom: -17px;"><img src="<?php echo URLROOT; ?>public/img/date.png" ></span></li>
                                     <li><span>01/12/2020</span></li>
 									<li><span>01/12/2020</span></li>
 									
                                 </ul>
+                                <a href="<?php echo URLROOT; ?>Users/detail"> <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                    view</button> </a>
+                                <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">$32.50</h3>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>
+                                <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+                                <div class="product-btns">
+                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+
+                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                        Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <!-- /Product Single -->
+
+                        <!-- Product Single -->
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <div class="product-label">
+                                    <span>New</span>
+
+                                </div>
+                                <ul class="product-countdown">
+								<li><span style="margin-bottom: -17px;"><img src="<?php echo URLROOT; ?>public/img/date.png" ></span></li>
+                                    <li><span>01/12/2020</span></li>
+                                    <li><span>01/12/2020</span></li>
+                                </ul>
                                 <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
                                     view</button>
-                                <img src="img/salle.png" alt="">
+                                <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
                             </div>
                             <div class="product-body">
                                 <h3 class="product-price">$32.50</h3>
@@ -119,49 +157,13 @@
 
                                 </div>
                                 <ul class="product-countdown">
-								<li><span style="margin-bottom: -17px;"><img src="img/date.png" ></span></li>
+								<li><span style="margin-bottom: -17px;"><img src="<?php echo URLROOT; ?>public/img/date.png" ></span></li>
                                     <li><span>01/12/2020</span></li>
                                     <li><span>01/12/2020</span></li>
                                 </ul>
                                 <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
                                     view</button>
-                                <img src="img/salle.png" alt="">
-                            </div>
-                            <div class="product-body">
-                                <h3 class="product-price">$32.50</h3>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o empty"></i>
-                                </div>
-                                <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-                                <div class="product-btns">
-                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-
-                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                        Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Product Single -->
-
-                        <!-- Product Single -->
-                        <div class="product product-single">
-                            <div class="product-thumb">
-                                <div class="product-label">
-                                    <span>New</span>
-
-                                </div>
-                                <ul class="product-countdown">
-								<li><span style="margin-bottom: -17px;"><img src="img/date.png" ></span></li>
-                                    <li><span>01/12/2020</span></li>
-                                    <li><span>01/12/2020</span></li>
-                                </ul>
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
-                                    view</button>
-                                <img src="img/salle.png" alt="">
+                                <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
                             </div>
                             <div class="product-body">
                                 <h3 class="product-price">$32.50 </h3>
@@ -191,13 +193,13 @@
 
                                 </div>
                                 <ul class="product-countdown">
-								<li><span style="margin-bottom: -17px;"><img src="img/date.png" ></span></li>
+								<li><span style="margin-bottom: -17px;"><img src="<?php echo URLROOT; ?>public/img/date.png" ></span></li>
                                     <li><span>01/12/2020</span></li>
                                     <li><span>01/12/2020</span></li>
                                 </ul>
                                 <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
                                     view</button>
-                                <img src="img/salle.png" alt="">
+                                <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
                             </div>
                             <div class="product-body">
                                 <h3 class="product-price">$32.50</h3>
@@ -244,12 +246,12 @@
                 <div class="product product-single">
                     <div class="product-thumb">
                         <ul class="product-countdown">
-						<li><span style="margin-bottom: -17px;"><img src="img/date.png" ></span></li>
+						<li><span style="margin-bottom: -17px;"><img src="<?php echo URLROOT; ?>public/img/date.png" ></span></li>
                             <li><span>01/12/2020</span></li>
                             <li><span>01/12/2020</span></li>
                         </ul>
                         <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-                        <img src="img/salle.png" alt="">
+                        <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
                     </div>
                     <div class="product-body">
                         <h3 class="product-price">$32.50</h3>
@@ -277,12 +279,12 @@
                 <div class="product product-single">
                     <div class="product-thumb">
                         <ul class="product-countdown">
-						<li><span style="margin-bottom: -17px;"><img src="img/date.png" ></span></li>
+						<li><span style="margin-bottom: -17px;"><img src="<?php echo URLROOT; ?>public/img/date.png" ></span></li>
                             <li><span>01/12/2020</span></li>
                             <li><span>01/12/2020</span></li>
                         </ul>
                         <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-                        <img src="img/salle.png" alt="">
+                        <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
                     </div>
                     <div class="product-body">
                         <h3 class="product-price">$32.50</h3>
@@ -310,12 +312,12 @@
                 <div class="product product-single">
                     <div class="product-thumb">
                         <ul class="product-countdown">
-						<li><span style="margin-bottom: -17px;"><img src="img/date.png" ></span></li>
+						<li><span style="margin-bottom: -17px;"><img src="<?php echo URLROOT; ?>public/img/date.png" ></span></li>
                             <li><span>01/12/2020</span></li>
                             <li><span>01/12/2020</span></li>
                         </ul>
                         <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-                        <img src="img/salle.png" alt="">
+                        <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
                     </div>
                     <div class="product-body">
                         <h3 class="product-price">$32.50</h3>
@@ -343,12 +345,12 @@
                 <div class="product product-single">
                     <div class="product-thumb">
                         <ul class="product-countdown">
-						<li><span style="margin-bottom: -17px;"><img src="img/date.png" ></span></li>
+						<li><span style="margin-bottom: -17px;"><img src="<?php echo URLROOT; ?>public/img/date.png" ></span></li>
                             <li><span>01/12/2020</span></li>
                             <li><span>01/12/2020</span></li>
                         </ul>
                         <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-                        <img src="img/salle.png" alt="">
+                        <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
                     </div>
                     <div class="product-body">
                         <h3 class="product-price">$32.50</h3>

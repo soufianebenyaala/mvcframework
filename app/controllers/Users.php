@@ -191,7 +191,7 @@ class Users extends Controller {
 
 
 
-
+   
 
     public function login() {
         $data = [
@@ -230,7 +230,16 @@ class Users extends Controller {
                 if ($loggedInUser) {
                     $test = $this->userModel->verify_account($data['email']);
                     if($test){
-                        $this->createUserSession($loggedInUser);
+                        if($data['email'] != "admin@gmail.com")
+                            {$this->createUserSession($loggedInUser);}
+                            else{
+                                $_SESSION['user_id'] = $loggedInUser->id_membre;
+                                $_SESSION['user_first_name'] = $loggedInUser->first_name;
+                                $_SESSION['user_last_name'] = $loggedInUser->last_name;
+                                $_SESSION['email'] = $loggedInUser->email;
+                                header('location:' . URLROOT . 'admin/index');
+
+                            }
                     }else{
                         $_SESSION['verifyAccount_email'] =$data['email'];
                         $this->sendMailOfVerificationAccount($data['email']);
@@ -238,7 +247,7 @@ class Users extends Controller {
                     }
                    
                 } else {
-                    $data['passwordError'] = 'Password or username is incorrect. Please try again.';
+                    $data['passwordError'] = 'Password or email is incorrect. Please try again.';
 
                     $this->view('login', $data);
                 }
@@ -323,6 +332,11 @@ class Users extends Controller {
         $this->view('verifyaccount', $data1);
 
     
+}
+
+public function  detail() {
+    $this->view('reservation_details');
+
 }
 
 }
