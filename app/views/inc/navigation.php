@@ -20,10 +20,10 @@
                 <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
                 <ul class="menu-list">
                     <li><a href="<?php echo URLROOT; ?>index">Home</a></li>
-                    <li><a href="#">Booking</a></li>
+                    <li><a href="<?php echo URLROOT; ?>recherche/recherche">Booking</a></li>
                     <?php if(isset($_SESSION['user_id'])){  ?>
                     <li><a href="<?php echo URLROOT; ?>profiles/profile">Profil</a></li>
-                    <li><a href="#">Cart</a></li>
+                    <li><a href="<?php echo URLROOT; ?>paniers/panier">Cart</a></li>
                     <?php } ?>
 
                 </ul>

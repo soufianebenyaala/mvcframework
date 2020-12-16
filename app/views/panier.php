@@ -26,7 +26,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="thumb"><img src="img/thumb-product1.jpg" alt=""></td>
+                                <td class="thumb"><img src="<?php echo URLROOT; ?>public/img/thumb-product1.jpg" alt=""></td>
                                 <td class="details">
                                     <a href="#">Product Name Goes Here</a>
                                     <ul>
@@ -43,7 +43,7 @@
                                             class="fa fa-close"></i></button></td>
                             </tr>
                             <tr>
-                                <td class="thumb"><img src="img/thumb-product1.jpg" alt=""></td>
+                                <td class="thumb"><img src="<?php echo URLROOT; ?>public/img/thumb-product1.jpg" alt=""></td>
                                 <td class="details">
                                     <a href="#">Product Name Goes Here</a>
                                     <ul>
@@ -60,7 +60,7 @@
                                             class="fa fa-close"></i></button></td>
                             </tr>
                             <tr>
-                                <td class="thumb"><img src="img/thumb-product1.jpg" alt=""></td>
+                                <td class="thumb"><img src="<?php echo URLROOT; ?>public/img/thumb-product1.jpg" alt=""></td>
                                 <td class="details">
                                     <a href="#">Product Name Goes Here</a>
                                     <ul>

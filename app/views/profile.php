@@ -12,8 +12,7 @@
             <div class="product product-details clearfix">
                 <div class="col-md-1"> </div>
                 <div class="col-md-4">
-                    <img src="<?php echo URLROOT; ?>img/<?= $data['photo_de_profile']; ?>" alt="" width="305px" height="380px">
-
+                    <img src="<?php echo URLROOT; ?>public/img/profil.jpg" alt="" width="305px" height="380px">
                 </div>
                 <div class="col-md-6">
 

@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                                 <div class="shopping-cart-btns">
-                                    <button class="main-btn">View Cart</button>
+                                <a href="<?php echo URLROOT; ?>paniers/panier"><button class="main-btn">View Cart</button></a>
                                     <button class="primary-btn">Checkout <i
                                             class="fa fa-arrow-circle-right"></i></button>
                                 </div>
