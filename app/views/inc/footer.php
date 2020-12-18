@@ -103,7 +103,6 @@
 	<script src="<?php echo URLROOT; ?>public/js/nouislider.min.js"></script>
 	<script src="<?php echo URLROOT; ?>public/js/jquery.zoom.min.js"></script>
 	<script src="<?php echo URLROOT; ?>public/js/main.js"></script>
-
 </body>
 
 </html>
