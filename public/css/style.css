@@ -147,6 +147,10 @@ hr {
 	Buttons
 \*----------------------------*/
 
+#editt {
+    margin-top: -380px;
+}
+
 .main-btn,
 .primary-btn {
     display: inline-block;

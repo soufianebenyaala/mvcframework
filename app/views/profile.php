@@ -13,6 +13,9 @@
                 <div class="col-md-1"> </div>
                 <div class="col-md-4">
                     <img src="<?php echo URLROOT; ?>public/img/profil.jpg" alt="" width="305px" height="380px">
+                    <div  id="editt">
+                        <button class="main-btn"><input type="file"></button>
+                    </div>
                 </div>
                 <div class="col-md-6">
 
