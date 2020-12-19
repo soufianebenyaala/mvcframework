@@ -3,40 +3,65 @@ class profiles extends Controller {
     public function __construct() {
         $this->userModel = $this->model('User');
     }
-    public function index() {
-         $data=[
-            'first_name' => '',
-            'last_name' => '',
-            'pseudo' => '',
-            'photo_de_profile' => '',
-            'email' => '',
-            'addresse' => '',
-            'zip_code' => '',
-            'pays' => '',
-            'ville' => '',
-            'telephone' => '',
-            'sexe' => '',
-         ];
-         
-        //mettre les donne de la utilisature du email "$email" donne un object "$userdata" 
-         $email=$_SESSION['email'];
-         $tab = $this->userModel->findUserByEmailAndReturnUserData($email);
-         $userdata =$tab[0];
+    public function profile() {
+        $data = [
+            'getdata' => '',
+            
+        ];
+        $data['getdata'] = $this->userModel->findUserByEmailAndReturnUserData($_SESSION['user_email']);
 
-         $data['first_name']  = $userdata->first_name ;
-         $data['last_name']  = $userdata->last_name ;
-         $data['photo_de_profile']  = $userdata->photo_de_profile ;
-         $data['email']  = $userdata->email ;
-         $data['addresse']  = $userdata->addresse ;
-         $data['zip_code']  = $userdata->zip_code ;
-         $data['pays']  = $userdata->pays ;
-         $data['ville']  = $userdata->ville ;
-         $data['telephone']  = $userdata->telephone ;
-         $data['sexe']  = $userdata->sexe ;
-         $data['pseudo']  = $userdata->pseudo ;
-         $this->view('profile',$data);
+        $this->view('profile',$data);
         
     }
+    public function editprofile(){
+        $data = [
+            'getdata' => '',
+            'photo' => ''
+            
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            
+            $data = [
+                'photo' => trim($_POST['image'])
+            ];
+
+
+            //Validate photo
+            if (empty($data['photo'])) {
+               $data['photoError'] = 'Please enter photo.';
+             }
+
+             var_dump($_FILES);
+            // Make sure that errors are empty
+            if (empty($data['photoError']) ) {
+
+            //Register user from model function
+            if ($this->userModel->editphoto($data,$_FILES["image"])) {
+            //Redirect to the login page
+       
+            header('location: ' . URLROOT . 'profiles/profile');
+        
+            } else {
+               die('Something went wrong.');
+        
+            }
+}
+      
+var_dump($_FILES);
+
+
+
+    }
+    
+    var_dump($_FILES);
+    $data['getdata'] = $this->userModel->findUserByEmailAndReturnUserData($_SESSION['user_email']);
+
+    $this->view('profile',$data);
+}
     
 
 

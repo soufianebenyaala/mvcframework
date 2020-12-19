@@ -6,11 +6,11 @@ class User {
     }
 
     public function register($data) {
-        $this->db->query('INSERT INTO membre (first_name,last_name,pseudo,email,addresse,zip_code,pays,ville,telephone,mdp,sexe,verifyAccount) 
-        VALUES(:first_name, :last_name,:pseudo,:email,:addresse,:zip_code,:pays,:ville,:telephone,:password,:sexe,:verifyAccount)');
+        $this->db->query('INSERT INTO membre (photo,last_name,pseudo,email,addresse,zip_code,pays,ville,telephone,mdp,sexe,verifyAccount) 
+        VALUES(:photo, :last_name,:pseudo,:email,:addresse,:zip_code,:pays,:ville,:telephone,:password,:sexe,:verifyAccount)');
         
         //Bind values
-        $this->db->bind(':first_name', $data['first_name']);
+        $this->db->bind(':photo', $data['photo']);
         $this->db->bind(':last_name', $data['last_name']);
         $this->db->bind(':pseudo', $data['pseudo']);
         $this->db->bind(':email', $data['email']);
@@ -136,5 +136,29 @@ class User {
 
             }
                 
+        public function editphoto($data,$picture){
+
+            $this->db->query('UPDATE membre SET photo=:photo where id_membre = :id');
+            
+            //Bind values
+            $path = URLROOT.'public/users/'.$_SESSION["user_id"].'/';
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+                $tmp_name = $picture["tmp_name"];
+                move_uploaded_file($tmp_name,$path);
+            }
+            $this->db->bind(':photo', $data['photo']);
+            $this->db->bind(':id', $_SESSION["user_id"]);
+
+
+    
+            //Execute function
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
 
 }

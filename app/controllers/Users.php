@@ -267,7 +267,14 @@ class Users extends Controller {
         $_SESSION['user_id'] = $user->id_membre;
         $_SESSION['user_first_name'] = $user->first_name;
         $_SESSION['user_last_name'] = $user->last_name;
-        $_SESSION['email'] = $user->email;
+        $_SESSION['user_pseudo'] = $user->pseudo;
+        $_SESSION['user_email'] = $user->email;
+        $_SESSION['user_addresse'] = $user->addresse;
+        $_SESSION['user_zip_code'] = $user->zip_code;
+        $_SESSION['user_pays'] = $user->pays;
+        $_SESSION['user_ville'] = $user->ville;
+        $_SESSION['user_telephone'] = $user->telephone;
+        $_SESSION['user_sexe'] =$user->sexe;
         header('location:' . URLROOT . 'index');
     }
 
