@@ -8,6 +8,9 @@
     //APP ROOT
     define('APPROOT', dirname(dirname(__FILE__)));
 
+    //img
+    define('IMGROOT', dirname(dirname(dirname(__FILE__))));
+
     //URLROOT (Dynamic links)
     define('URLROOT', 'http://localhost/mvcframework/');
 

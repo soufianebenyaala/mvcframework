@@ -132,17 +132,14 @@ class Users extends Controller {
                 $data['telError'] = 'Telephone can only contain numbre .';
             }
 
-
             //Validate email
             if (empty($data['email'])) {
                 $data['emailError'] = 'Please enter email.';
             } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                 $data['emailError'] = 'Please enter the correct format.';
-            } else {
-                //Check if email exists.
-                if ($this->userModel->findUserByEmail($data['email'])) {
+            } elseif ($this->userModel->findUserByEmail($data['email'])) {
                 $data['emailError'] = 'Email is already taken.';
-                }
+               
             }
 
            // Validate password on length, numeric values,

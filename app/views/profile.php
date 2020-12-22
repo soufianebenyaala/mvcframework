@@ -1,11 +1,6 @@
 <?php require APPROOT."/views/inc/top-header.php" ?>
 <?php require APPROOT."/views/inc/header.php" ?>
-<?php require APPROOT."/views/inc/navigation.php";
-
-var_dump($_GET);
-
-var_dump($_FILES);
-?>
+<?php require APPROOT."/views/inc/navigation.php";?>
 
 <!-- section -->
 <div class="section">
@@ -17,11 +12,18 @@ var_dump($_FILES);
             <div class="product product-details clearfix">
                 <div class="col-md-1"> </div>
                 <div class="col-md-4">
-                    <img src="<?php echo URLROOT; ?>public/users/<?=$_SESSION["user_id"]?>/<?=$data["getdata"][0]->photo?>" alt="" width="305px" height="380px">
-                    <div id="editt">
-                        <button type="button" class="main-btn" data-toggle="modal" data-target="#exampleModal"
-                            data-whatever="@mdo"><i class="fa fa-edit" style="font-size:30px;width:275px;"></i></button>
-                    </div>
+                    <?php
+                    $tab=$data['imageState'][0];
+                   if($tab->state_of_photo == 1){ ?>
+                    <img src="<?php echo URLROOT; ?>public/img/users/<?= $tab->photo; ?>" alt="" width="305px"
+                        height="380px">
+                    <?php }else{?>
+                    <img src="<?php echo URLROOT; ?>public/img/users/default.jpg" alt="" width="305px" height="380px">
+                    <?php }?>
+
+                    <button type="button" class="main-btn" data-toggle="modal" data-target="#exampleModal"
+                        data-whatever="@mdo"><i class="fa fa-edit" style="font-size:30px;width:275px;"></i></button>
+
                     <!-- modal of edit photo -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -34,14 +36,13 @@ var_dump($_FILES);
                                     <h2 class="modal-title" id="exampleModalLabel">change photo</h2>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="<?= URLROOT; ?>profiles/editprofile?$baba=aaa" method="POST">
+                                    <form action="<?= URLROOT; ?>profiles/editphotoprofile" method="POST"
+                                        enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">insert photo : </label>
                                             <input type="file" class="form-control" id="recipient-name" name="image">
                                             <p>PNG 600x275</p>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-primary">edit</button>
                                             </div>
                                         </div>
@@ -56,72 +57,9 @@ var_dump($_FILES);
                 <div class="col-md-6">
 
                     <div class="pull-right">
-                        <button type="button" class="main-btn" data-toggle="modal" data-target="#Modaleditprofil"
-                            data-whatever="@fat"><i class="fa fa-edit d" style="font-size:24px;"></i></button>
-                        <!-- modal of edit profile -->
-                        <div class="modal fade" id="Modaleditprofil" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h2 class="modal-title" id="exampleModalLabel">change profile</h2>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="<?= URLROOT; ?>profiles/editprofile" method="POST">
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">First name : </label>
-                                                <input type="text" class="form-control" id="recipient-name"
-                                                    name="first_name" value="<?= $_SESSION['user_first_name']; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">Last name : </label>
-                                                <input type="text" class="form-control" id="recipient-name"
-                                                    name="last_name" value="<?= $_SESSION['user_last_name']; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">Pseudo : </label>
-                                                <input type="text" class="form-control" id="recipient-name"
-                                                    name="pseudo" value="<?= $_SESSION['user_pseudo']; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">Addresse : </label>
-                                                <input type="text" class="form-control" id="recipient-name"
-                                                    name="addresse" value="<?= $_SESSION['user_addresse']; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">Country : </label>
-                                                <input type="text" class="form-control" id="recipient-name"
-                                                    name="country" value="<?= $_SESSION['user_pays']; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">city : </label>
-                                                <input type="text" class="form-control" id="recipient-name" name="city"
-                                                    value="<?= $_SESSION['user_ville']; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">Zip code : </label>
-                                                <input type="text" class="form-control" id="recipient-name"
-                                                    name="zip_code" value="<?= $_SESSION['user_zip_code']; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">telephone : </label>
-                                                <input type="text" class="form-control" id="recipient-name"
-                                                    name="telephone" value="<?= $_SESSION['user_telephone']; ?>">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">edit</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- modal of edit profile -->
+                        <a href="<?= URLROOT; ?>profiles/editprofile">
+                        <button type="submit" class="main-btn"><i class="fa fa-edit d" style="font-size:24px;"></i></button>
+                    </a>
                     </div>
                     <?php 
                         foreach( $data['getdata'] as $tab){?>
