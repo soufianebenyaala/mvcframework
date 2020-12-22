@@ -338,10 +338,7 @@ class Users extends Controller {
     
 }
 
-public function  detail() {
-    $this->view('reservation_details');
 
-}
 
 }
 

@@ -1,7 +1,7 @@
 <?php require "inc/top-header.php" ?>
 <?php require "inc/header.php" ?>
 <?php require "inc/navigation.php" ?>
-
+<?php echo URLROOT; ?>Paniers/panier
 	<!-- section -->
 	<div class="section">
 		<!-- container -->
@@ -10,33 +10,40 @@
 			<div class="row">
 				<!--  Product Details -->
 				<div class="product product-details clearfix">
+				<?php foreach($data['produit_detail'] as $produit_detail){ ?>  
 					<div class="col-md-6">
 						<div id="product-main-view">
 							<div class="product-view">
-								<img src="<?php echo URLROOT; ?>public/img/main-product1.jpg" alt="">
+								<img src="<?php echo URLROOT; ?>public/img/salle date/<?= $produit_detail->titre ?>/<?= $produit_detail->photo_1 ?>" alt="">
 							</div>
 							<div class="product-view">
-								<img src="<?php echo URLROOT; ?>public/img/main-product2.jpg" alt="">
+								<img src="<?php echo URLROOT; ?>public/img/salle date/<?= $produit_detail->titre ?>/<?= $produit_detail->photo_2 ?>" alt="">
                             </div>
                             <div class="product-view">
-								<img src="<?php echo URLROOT; ?>public/img/main-product3.jpg" alt="">
+								<img src="<?php echo URLROOT; ?>public/img/salle date/<?= $produit_detail->titre ?>/<?= $produit_detail->photo_3 ?>" alt="">
+							</div>
+							<div class="product-view">
+								<img src="<?php echo URLROOT; ?>public/img/salle date/<?= $produit_detail->titre ?>/<?= $produit_detail->photo_4 ?>" alt="">
 							</div>
 						</div>
 						<div id="product-view">
 							<div class="product-view">
-								<img src="<?php echo URLROOT; ?>public/img/thumb-product1.jpg" alt="">
+								<img src="<?php echo URLROOT; ?>public/img/salle date/<?= $produit_detail->titre ?>/<?= $produit_detail->photo_1 ?>" alt="">
                             </div>
                             <div class="product-view">
-								<img src="<?php echo URLROOT; ?>public/img/thumb-product2.jpg" alt="">
+								<img src="<?php echo URLROOT; ?>public/img/salle date/<?= $produit_detail->titre ?>/<?= $produit_detail->photo_2 ?>" alt="">
                             </div>
                             <div class="product-view">
-								<img src="<?php echo URLROOT; ?>public/img/thumb-product3.jpg" alt="">
+								<img src="<?php echo URLROOT; ?>public/img/salle date/<?= $produit_detail->titre ?>/<?= $produit_detail->photo_3 ?>" alt="">
+							</div>
+							<div class="product-view">
+								<img src="<?php echo URLROOT; ?>public/img/salle date/<?= $produit_detail->titre ?>/<?= $produit_detail->photo_4 ?>" alt="">
 							</div>
 
 						</div>
 					</div>
 					<div class="col-md-6">
-                    <h2 class="product-name">Product Name Goes Here</h2>
+                    <h2 class="product-name"><?= $produit_detail->titre ?></h2>
                             <div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -49,30 +56,35 @@
 							</div>
 						<div class="product-body">
 
-							<h2 class="product-price">$32.50</h2>
-                            <p><strong>Availability:</strong> free</p>
-                            <p><strong>Arrival : </strong> 01/07/2016  	&nbsp &nbsp	&nbsp <strong> Departure : </strong> 07/07/2016</p>
-                            <p><strong>Country:</strong> Tunisie</p>
-                            <p><strong>City:</strong> Djerba</p>
-                            <p><strong>Adresse:</strong> El Erriadh </p>
+							<h2 class="product-price">$<?= $produit_detail->prix ?></h2>
+                            <p><strong>Availability : </strong> <?= $produit_detail->etat ?></p>
+                            <p><strong>Arrival : </strong> <?= $produit_detail->date_arrivee ?>  	&nbsp &nbsp	&nbsp <strong> Departure : </strong> <?= $produit_detail->date_depart ?></p>
+                            <p><strong>Country : </strong> <?= $produit_detail->pays ?></p>
+                            <p><strong>City : </strong><?= $produit_detail->ville ?></p>
+                            <p><strong>Adresse : </strong> <?= $produit_detail->addresse ?></p>
 				
 							<div class="product-options">
 								<ul class="size-option">
 									<li><span class="text-uppercase">capacity:</span></li>
-									<li class="active"><p><b>200</b></p></li>
+									<li class="active"><p><b><?= $produit_detail->capacite ?></b></p></li>
 							
 								</ul>
 								<ul class="color-option">
 									<li><span class="text-uppercase">category:</span></li>
-									<li><p><b>meeting</b></a></li>
+									<li><p><b><?= $produit_detail->categorie ?></b></a></li>
 								</ul>
 							</div>
 
 							<div class="product-btns">
-
-								<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+							<?php if(isset($_SESSION['user_id'])){  ?>
+								<a href="<?php echo URLROOT; ?>Paniers/panier/<?= $produit_detail->id_produit ?>"><button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button></a>
+								<?php }else{ ?>
+									<a href="<?php echo URLROOT; ?>Users/register"><button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> log in to add to cart</button></a>
+								<?php }  ?>
 								<div class="pull-right">
+								<?php if(isset($_SESSION['user_id'])){  ?>
 									<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+									<?php }  ?>
 								</div>
 							</div>
 						</div>
@@ -81,13 +93,11 @@
 						<div class="product-tab">
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-								<li><a data-toggle="tab" href="#tab1">Details</a></li>
 								<li><a data-toggle="tab" href="#tab2">Reviews (3)</a></li>
 							</ul>
 							<div class="tab-content">
 								<div id="tab1" class="tab-pane fade in active">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-										irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									<p><?= $produit_detail->description ?></p>
 								</div>
 								<div id="tab2" class="tab-pane fade in">
 
@@ -192,7 +202,7 @@
 							</div>
 						</div>
 					</div>
-
+					<?php } ?>
 				</div>
 				<!-- /Product Details -->
 			</div>

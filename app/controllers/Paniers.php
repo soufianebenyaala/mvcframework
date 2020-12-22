@@ -1,13 +1,17 @@
 <?php
 class paniers extends Controller {
     public function __construct() {
-        //$this->userModel = $this->model('User');
+        $this->userModel = $this->model('Panier');
     }
 
-    public function panier() {
+    public function panier($id) {
         $data = [
-            'title' => 'Home page'
+            'panierdata' => ''
         ];
+
+        $data['panierdata'] = $this->userModel->affichePanier();
+
+        $this->userModel->addProduitPanier($id);
 
         $this->view('panier', $data);
     }
