@@ -280,6 +280,7 @@ class Users extends Controller {
         unset($_SESSION['user_first_name']);
         unset($_SESSION['user_last_name']);
         unset($_SESSION['email']);
+        unset($_SESSION['panier']);
         header('location:' . URLROOT . 'users/login');
     }
 

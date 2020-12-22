@@ -1,6 +1,5 @@
 <!-- HEADER -->
 <header>
-
     <!-- header -->
     <div id="header">
         <div class="container">
@@ -65,7 +64,9 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                             <div class="header-btns-icon">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span class="qty">3</span>
+                                <?php if(isset($_SESSION['panier'])){  ?>
+                                <span class="qty"><?= sizeof(explode('.',substr($_SESSION['panier'], 1)));?></span>
+                                <?php } ?>
                             </div>
                         </a>
                         <div class="custom-menu">
@@ -76,7 +77,7 @@
                                             <img src="./img/thumb-product01.jpg" alt="">
                                         </div>
                                         <div class="product-body">
-                                            <h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
+                                            <h3 class="product-price">$32.50</h3>
                                             <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
                                         </div>
                                         <button class="cancel-btn"><i class="fa fa-trash"></i></button>
@@ -86,7 +87,7 @@
                                             <img src="./img/thumb-product01.jpg" alt="">
                                         </div>
                                         <div class="product-body">
-                                            <h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
+                                            <h3 class="product-price">$32.50</h3>
                                             <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
                                         </div>
                                         <button class="cancel-btn"><i class="fa fa-trash"></i></button>

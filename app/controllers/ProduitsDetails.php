@@ -12,6 +12,8 @@ class ProduitsDetails extends Controller {
         $data['produit_detail'] = $this->userModel->produitdetail($id);
         $this->view('reservation_details', $data);
     }
+
+
     
   
 }

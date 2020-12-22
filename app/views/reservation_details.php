@@ -1,7 +1,7 @@
 <?php require "inc/top-header.php" ?>
 <?php require "inc/header.php" ?>
-<?php require "inc/navigation.php" ?>
-<?php echo URLROOT; ?>Paniers/panier
+<?php require "inc/navigation.php";?>
+
 	<!-- section -->
 	<div class="section">
 		<!-- container -->
@@ -74,11 +74,13 @@
 									<li><p><b><?= $produit_detail->categorie ?></b></a></li>
 								</ul>
 							</div>
-
 							<div class="product-btns">
-							<?php if(isset($_SESSION['user_id'])){  ?>
-								<a href="<?php echo URLROOT; ?>Paniers/panier/<?= $produit_detail->id_produit ?>"><button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button></a>
-								<?php }else{ ?>
+							<?php if(isset($_SESSION['user_id'])){ 
+								if(verifyIfIDexist($produit_detail->id_produit)){ ?>
+									<button class="primary-btn add-to-cart">This product is Added to cart</button></a>
+								<?php }else{?>
+									<a href="<?php echo URLROOT; ?>Paniers/addProduitAuPanier/<?= $produit_detail->id_produit ?>"><button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button></a>
+								<?php }}else{ ?>
 									<a href="<?php echo URLROOT; ?>Users/register"><button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> log in to add to cart</button></a>
 								<?php }  ?>
 								<div class="pull-right">
@@ -359,4 +361,16 @@
 
 
 
-<?php require "inc/footer.php" ?>
+<?php require "inc/footer.php";
+    //verify if produit already add 
+    function verifyIfIDexist($id){
+		if(isset($_SESSION['panier'])){
+        $tab =explode('.',substr($_SESSION['panier'], 1));
+        foreach($tab as $ch){
+            if($ch == $id){
+                return true;
+            }
+		}return false;
+	}return false;
+    }
+?>
