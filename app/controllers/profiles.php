@@ -11,6 +11,20 @@ class profiles extends Controller {
         $data['imageState'] = $this->userModel->imageState();
         $data['getdata'] = $this->userModel->findUserByEmailAndReturnUserData($_SESSION['user_email']);
 
+
+
+        $data['commande'] = $this->userModel-> orderhistorique();
+        foreach( $data['commande']  as $com){
+        
+            $tab =explode('.',$com->lesproduits);
+            foreach($tab as $id){
+
+                $data['produitcommande']['data'.$id] = $this->userModel->produitcommande($id);
+            }
+    }
+        
+        
+
         $this->view('profile',$data);
         
     }

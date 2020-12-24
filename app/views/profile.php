@@ -1,6 +1,8 @@
 <?php require APPROOT."/views/inc/top-header.php" ?>
 <?php require APPROOT."/views/inc/header.php" ?>
-<?php require APPROOT."/views/inc/navigation.php";?>
+<?php require APPROOT."/views/inc/navigation.php";
+var_dump($data['commande']);
+?>
 
 <!-- section -->
 <div class="section">
@@ -99,68 +101,34 @@
                         <thead>
                             <tr>
                                 <th>Product</th>
-                                <th></th>
-                                <th class="text-center">Price</th>
-                                <th class="text-center">date</th>
-                                <th class="text-center">numero de suivi</th>
-                                <th class="text-right"></th>
+                                <th class="text-center"></th>
+                                
+                                <th class="text-center" >Price</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($data['produitcommande'] as $object){
+                                          foreach($object as $tab){   ?>
                             <tr>
-                                <td class="thumb"><img src="<?php echo URLROOT; ?>img/thumb-product1.jpg" alt=""></td>
+                            <td class="thumb">
+                                <img src="<?php echo URLROOT; ?>public/img/salle date/<?= $tab->titre ?>/<?= $tab->photo_1 ?>" alt="">
+                            </td>
                                 <td class="details">
-                                    <a href="#">Product Name Goes Here</a>
+                                    <a href="#"><?= $tab->titre ?></a>
                                     <ul>
-                                        <li><span>CAPACITY : 70</span></li>
-                                        <li><span>Departure : 20/08/2020 </span></li>
-                                        <li><span> Arrival : 25/08/2020</span></li>
-                                        <li><span>CITY : Djerba</span></li>
+                                        <li><span>CAPACITY : <?= $tab->capacite ?></span></li>
+                                        <li><span>Departure : <?= $tab->date_depart ?> </span></li>
+                                        <li><span> Arrival : <?= $tab->date_arrivee ?></span></li>
+                                        <li><span>CITY : <?= $tab->ville ?></span></li>
                                     </ul>
                                 </td>
-                                <td class="price text-center"><strong>$32.50</strong><br></td>
-                                <td class="qty text-center">
-                                    <p>25/08/2020</p>
-                                </td>
-                                <td class="total text-center"><strong class="primary-color">778222</strong></td>
+                            
+                                <td class="total text-center" ><strong class="primary-color">$<?= $tab->prix ?></strong></td>
 
                             </tr>
-                            <tr>
-                                <td class="thumb"><img src="<?php echo URLROOT; ?>img/thumb-product1.jpg" alt=""></td>
-                                <td class="details">
-                                    <a href="#">Product Name Goes Here</a>
-                                    <ul>
-                                        <li><span>CAPACITY : 70</span></li>
-                                        <li><span>Departure : 20/08/2020 </span></li>
-                                        <li><span> Arrival : 25/08/2020</span></li>
-                                        <li><span>CITY : Djerba</span></li>
-                                    </ul>
-                                </td>
-                                <td class="price text-center"><strong>$32.50</strong></td>
-                                <td class="qty text-center">
-                                    <p>25/08/2020</p>
-                                </td>
-                                <td class="total text-center"><strong class="primary-color">4535</strong></td>
-
-                            </tr>
-                            <tr>
-                                <td class="thumb"><img src="<?php echo URLROOT; ?>img/thumb-product1.jpg" alt=""></td>
-                                <td class="details">
-                                    <a href="#">Product Name Goes Here</a>
-                                    <ul>
-                                        <li><span>CAPACITY : 70</span></li>
-                                        <li><span>Departure : 20/08/2020 </span></li>
-                                        <li><span> Arrival : 25/08/2020</span></li>
-                                        <li><span>CITY : Djerba</span></li>
-                                    </ul>
-                                </td>
-                                <td class="price text-center"><strong>$32.50</strong></td>
-                                <td class="qty text-center">
-                                    <p>25/08/2020</p>
-                                </td>
-                                <td class="total text-center"><strong class="primary-color">42342</strong></td>
-
-                            </tr>
+                            <?php }} ?>
+                            
                         </tbody>
 
                     </table>

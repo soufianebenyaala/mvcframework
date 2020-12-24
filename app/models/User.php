@@ -186,4 +186,32 @@ class User {
             }
         }
 
+      public function orderhistorique(){
+
+            //Prepared statement
+            $this->db->query('SELECT * FROM commande WHERE id_membre = :id');
+            
+            
+            $this->db->bind(':id', $_SESSION["user_id"]);
+            
+            $res=$this->db->resultSet();
+                
+           return $res;
+      }
+      public function  produitcommande($id){
+
+        //Prepared statement
+        $this->db->query('SELECT * FROM produit,salle
+        WHERE produit.id_salle=salle.id_salle
+        AND id_produit = :id');
+        
+        
+        $this->db->bind(':id',$id);
+        
+        $res=$this->db->resultSet();
+            
+       return $res;
+  }
+
+
 }

@@ -27,7 +27,7 @@ class Paniers extends Controller {
 
     //delete produit form the session (delete charater form the chaine  ".29.28.12")
     public function deleteProduitAuPanier($id){
-
+        //Paniers/deleteProduitAuPanier
         $tab =explode('.',substr($_SESSION['panier'], 1));
         foreach($tab as $key =>$ch){
             if($ch == $id){

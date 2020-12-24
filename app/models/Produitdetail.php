@@ -5,6 +5,7 @@ class Produitdetail {
     public function __construct() {
         $this->db = new Database;
     }
+
     //Find last 4 offres (produit) add with admin
     public function produitdetail($id){
         //Prepared statement
@@ -19,4 +20,116 @@ class Produitdetail {
         return $res;
 
     }
+
+    public function addrating($data){
+        $this->db->query('INSERT INTO avis (id_membre, id_salle, commentaire, note, date_enregistrement) 
+        VALUES (:id_membre, :id_salle, :commentaire, :note, NOW())');
+        
+        //Bind values
+        $this->db->bind(':id_membre',$_SESSION['user_id'] );
+        $this->db->bind(':id_salle',$data['id_salle'] );
+        $this->db->bind(':commentaire', $data['message']);
+        $this->db->bind(':note', $data['rating']);
+
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+    public function returnsalleid($id){
+        //Prepared statement
+        $this->db->query('SELECT id_salle FROM produit WHERE id_produit = :id');
+        
+        $this->db->bind(':id', $id);
+                  
+        $res=$this->db->resultSet();
+                      
+        return $res;
+
+    }
+    // If Salle Already Has Rating From This Id_Membre
+    public function IfSalleAlreadyHasRatingFromThisId_Membre ($data){
+        $this->db->query('SELECT * FROM avis WHERE id_salle = :id');
+
+        //Bind value
+        $this->db->bind(':id', $data['id_salle']);
+        
+
+        $row = $this->db->single();
+
+        $id_membre = $row->id_membre;
+
+        if ($_SESSION['user_id'] == $id_membre) {
+            
+            return $row;
+        } else {
+            return false;
+        }
+
+
+    }
+
+    public function updateRating($data){
+        $this->db->query('UPDATE avis SET  id_membre = :id_membre ,id_salle = :id_salle , note = :note , commentaire = :commentaire , date_enregistrement = NOW()
+        WHERE id_avis= :id');
+        
+        //Bind values
+        $this->db->bind(':id', $data['id_avis']);
+        $this->db->bind(':id_membre',$_SESSION['user_id'] );
+        $this->db->bind(':id_salle',$data['id_salle'] );
+        $this->db->bind(':commentaire', $data['message']);
+        $this->db->bind(':note', $data['rating']);
+
+
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    public function getSalleAvis($id){
+        //Prepared statement
+        $this->db->query('SELECT * FROM avis WHERE id_salle = :id');
+    //Bind values
+        $this->db->bind(':id', $id);
+                  
+        $res=$this->db->resultSet();
+                      
+        return $res;
+    }
+
+    public function addView($id,$newView){
+        $this->db->query("UPDATE produit SET views =:views
+        WHERE id_produit= :id");
+
+        //Bind values
+        $this->db->bind(':id', $id);
+        $this->db->bind(':views',$newView);
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function lastView($id){
+        $this->db->query('SELECT views FROM  produit
+        WHERE id_produit= :id');
+        
+        //Bind values
+        $this->db->bind(':id', $id);
+
+        $res=$this->db->resultSet();
+                      
+        return $res;
+
+    }
+
 }
