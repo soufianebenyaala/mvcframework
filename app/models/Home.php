@@ -9,12 +9,13 @@ class Home {
 
         //Prepared statement
         $this->db->query("SELECT produit.*,salle.titre,salle.photo_1 FROM produit,salle
-        WHERE produit.id_salle=salle.id_salle AND etat = 'libre'
+        WHERE produit.id_salle=salle.id_salle AND etat = 'libre' AND id_produit > (SELECT MAX(id_produit) FROM produit)-6 
         ORDER BY id_produit DESC");
           
         $res=$this->db->resultSet();
               
         return $res;
     }
+
 
 }
