@@ -28,13 +28,43 @@ class filterproduct {
    
 }
 
-     public function afficheAllData(){
-                      //Prepared statement
-                      $this->db->query('SELECT * FROM produit,salle
-                      WHERE produit.id_salle=salle.id_salle');
+     public function afficheAllData($category){
+
+        $sql="SELECT * FROM produit,salle WHERE produit.id_salle=salle.id_salle";
+      
+if($category == 'all'){
+    
+    $this->db->query($sql);
+}else{
+    $sql = $sql." AND categorie = :categorie ";
+    $this->db->query($sql);
+    if($category === 'Reunion,Formation'){
+       
+       $this->db->bind(':categorie', 'Reunion, Formation');
+
+   }elseif($category == 'Soireeentreprise'){
+
+   
+       $this->db->bind(':categorie', 'Soiree entreprise');
+
+   }elseif($category == 'Seminaireresidentiel'){
+
+   
+       $this->db->bind(':categorie', 'Seminaire residentiel');
+
+   }elseif($category == 'Conference,Convention'){
+
+
+       $this->db->bind(':categorie','Conference, Convention');
+
+   }
+}
+
               
-                      $res=$this->db->resultSet();
+    $res=$this->db->resultSet();
                             
-                      return $res;
+       return $res;
      }
+
+
 }

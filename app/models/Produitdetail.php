@@ -103,6 +103,24 @@ class Produitdetail {
         return $res;
     }
 
+    public function addAvisInSalleTable($produit_detailid_salle,$avisTotal){
+
+        $this->db->query('UPDATE salle SET  avis =:avis
+        WHERE id_salle= :id');
+        
+        //Bind values
+        $this->db->bind(':id',$produit_detailid_salle );
+        $this->db->bind(':avis', $avisTotal);
+
+
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function addView($id,$newView){
         $this->db->query("UPDATE produit SET views =:views
         WHERE id_produit= :id");
@@ -131,5 +149,22 @@ class Produitdetail {
         return $res;
 
     }
+
+    public function pikeForYou(){
+        //Prepared statement
+        $this->db->query("SELECT *
+        FROM produit
+        INNER JOIN salle ON salle.id_salle=produit.id_salle
+        INNER JOIN avis ON salle.id_salle =avis.id_salle
+        WHERE pays = :pays
+        ORDER BY produit.id_produit ASC
+        LIMIT 4");
+          
+        $this->db->bind(':pays', $_SESSION['user_pays']);
+
+        $res=$this->db->resultSet();
+              
+        return $res; 
+}
 
 }

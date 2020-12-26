@@ -204,7 +204,7 @@
             <!-- /Product Details -->
         </div>
         <!-- /row -->
-
+        <?php if(isset($_SESSION['user_id'])){  ?>
         <!-- row -->
         <div class="row">
             <!-- section title -->
@@ -214,7 +214,7 @@
                 </div>
             </div>
             <!-- section title -->
-
+            <?php foreach($data['pikeforyou'] as $produit){ ?>
             <!-- Product Single -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="product product-single">
@@ -222,137 +222,44 @@
                         <ul class="product-countdown">
                             <li><span style="margin-bottom: -17px;"><img
                                         src="<?php echo URLROOT; ?>public/img/date.png"></span></li>
-                            <li><span>01/12/2020</span></li>
-                            <li><span>01/12/2020</span></li>
+                            <li><span><?= $produit->date_depart ?></span></li>
+                            <li><span><?= $produit->date_arrivee ?></span></li>
                         </ul>
-                        <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-                        <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
+                        <a
+                                    href="<?php echo URLROOT; ?>ProduitsDetails/produitdetail/<?= $produit->id_produit ?>">
+                                    <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                        view</button> </a>
+                        <img src="<?php echo URLROOT."public/img/salle date/".$produit->titre.'/'.$produit->photo_1; ?>" alt="">
                     </div>
                     <div class="product-body">
                         <h3 class="product-price">$32.50</h3>
                         <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o empty"></i>
+                        <i class="fa fa-star<?php  if($produit->avis == 0){echo '-o empty';}?>"></i>
+                                    <i
+                                        class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1){echo '-o empty';}?>"></i>
+                                    <i
+                                        class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1 OR $produit->avis == 2 ){echo '-o empty';}?>"></i>
+                                    <i
+                                        class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1 OR $produit->avis == 2 OR $produit->avis == 3 ){echo '-o empty';} ?>"></i>
+                                    <i
+                                        class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1 OR $produit->avis == 2 OR $produit->avis == 3  OR $produit->avis == 4 ){echo '-o empty';}?>"></i>
                         </div>
-                        <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+                        <h2 class="product-name"><a href="#"><?= $produit->titre ?></a></h2>
                         <div class="product-btns">
                             <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 
-                            <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                Cart</button>
+                            <a href="<?php echo URLROOT; ?>paniers/panier/<?= $produit->id_produit ?>"><button
+                                            class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                            Cart</button></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /Product Single -->
-
-            <!-- Product Single -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <ul class="product-countdown">
-                            <li><span style="margin-bottom: -17px;"><img
-                                        src="<?php echo URLROOT; ?>public/img/date.png"></span></li>
-                            <li><span>01/12/2020</span></li>
-                            <li><span>01/12/2020</span></li>
-                        </ul>
-                        <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-                        <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">$32.50</h3>
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o empty"></i>
-                        </div>
-                        <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-                        <div class="product-btns">
-                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-
-                            <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /Product Single -->
-
-            <!-- Product Single -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <ul class="product-countdown">
-                            <li><span style="margin-bottom: -17px;"><img
-                                        src="<?php echo URLROOT; ?>public/img/date.png"></span></li>
-                            <li><span>01/12/2020</span></li>
-                            <li><span>01/12/2020</span></li>
-                        </ul>
-                        <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-                        <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">$32.50</h3>
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o empty"></i>
-                        </div>
-                        <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-                        <div class="product-btns">
-                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-
-                            <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /Product Single -->
-
-            <!-- Product Single -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <ul class="product-countdown">
-                            <li><span style="margin-bottom: -17px;"><img
-                                        src="<?php echo URLROOT; ?>public/img/date.png"></span></li>
-                            <li><span>01/12/2020</span></li>
-                            <li><span>01/12/2020</span></li>
-                        </ul>
-                        <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
-                        <img src="<?php echo URLROOT; ?>public/img/salle.png" alt="">
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">$32.50</h3>
-
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o empty"></i>
-                        </div>
-                        <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-                        <div class="product-btns">
-                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-
-                            <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php }  ?>
             <!-- /Product Single -->
         </div>
         <!-- /row -->
+        <?php }  ?>
     </div>
     <!-- /container -->
 </div>

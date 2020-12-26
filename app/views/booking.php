@@ -203,8 +203,8 @@
                                         <li><span><?= $tab->date_arrivee ?></span></li>
                                         <li><span><?= $tab->date_depart ?></span></li>
                                     </ul>
-                                    <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
-                                        view</button>
+                                    <a href="<?php echo URLROOT; ?>ProduitsDetails/produitdetail/<?= $tab->id_produit ?>"> <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                    view</button> </a>
                                     <img src="<?php echo URLROOT; ?>public/img/salle date/<?= $tab->titre ?>/<?= $tab->photo_1 ?>" alt="">
                                 </div>
                                 <div class="product-body">
@@ -291,7 +291,7 @@ function filter_data()
         method:"POST",
         data:{action:action, name:category, city:city},
         success:function(data){
-            alert(data);
+          
         }
     });
 }

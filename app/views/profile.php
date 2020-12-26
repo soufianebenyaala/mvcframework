@@ -1,7 +1,6 @@
 <?php require APPROOT."/views/inc/top-header.php" ?>
 <?php require APPROOT."/views/inc/header.php" ?>
 <?php require APPROOT."/views/inc/navigation.php";
-var_dump($data['commande']);
 ?>
 
 <!-- section -->

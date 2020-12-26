@@ -9,6 +9,8 @@ class Pages extends Controller {
             'title' => 'Home page',
             'last4Offers' => ''
         ];
+        $data['pikeforyou'] = $this->userModel->pikeForYou();
+        $data['topSalle'] = $this->userModel->topSalle();
         $data['last4Offers'] = $this->userModel->last4Offers();
         $this->view('index', $data);
     }

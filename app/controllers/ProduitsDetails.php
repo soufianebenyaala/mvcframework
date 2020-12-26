@@ -72,6 +72,8 @@ class ProduitsDetails extends Controller {
         $data['nombreTotalReviews'] = $this->nombreTotalReviews($data);
         //affiche avis de produit $id
         $data['avisTotal'] = $this->avisTotal($data);
+
+        $data['pikeforyou'] = $this->userModel->pikeForYou();
         
         $this->view('reservation_details', $data);
     }
@@ -96,6 +98,10 @@ class ProduitsDetails extends Controller {
         $data['nombreTotalReviews'] = $this->nombreTotalReviews($data);
         //affiche avis de produit $id
         $data['avisTotal'] = $this->avisTotal($data); 
+
+        $this->userModel->addAvisInSalleTable($data['produit_detail'][0]->id_salle,''.$data['avisTotal']);
+
+        $data['pikeforyou'] = $this->userModel->pikeForYou();
 
         $this->view('reservation_details', $data);
     }
