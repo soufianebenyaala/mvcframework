@@ -40,7 +40,7 @@ class Home {
         WHERE pays = :pays
         ORDER BY produit.id_produit ASC
         LIMIT 4");
-          
+
         $this->db->bind(':pays', $_SESSION['user_pays']);
 
         $res=$this->db->resultSet();

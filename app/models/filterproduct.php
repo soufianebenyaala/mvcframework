@@ -7,17 +7,51 @@ class filterproduct {
     }
     //Find last 4 offres (produit) add with admin
     public function filterproduct($data){
+        if(isset($_POST["action"]))
+        {
+            $query = 
+            "SELECT * FROM produit,salle WHERE produit.id_salle=salle.id_salle AND etat = 'libre'
+             and prix between ".$data['minPrice']." and ".$data['maxPrice'];
+            if(isset($data['minPrice'])&& !empty($data['minPrice']) && isset($data['maxPrice'])&& !empty($data['maxPrice'])){ 
 
-        if(isset($data['name']) && !empty($data['name']) ){
-        //Prepared statement
-        $this->db->query("SELECT * FROM salle WHERE category = :capacity ");
-    }else{
-        $this->db->query('SELECT * FROM produit,salle
-        WHERE produit.id_salle=salle.id_salle');
-    }
+                $query = 
+                "SELECT * FROM produit,salle WHERE produit.id_salle=salle.id_salle AND etat = 'libre'
+               and prix between ".$data['minPrice']." and ".$data['maxPrice'];
+               }
+            if(isset($data['category']) &&  $data['category'] != 'all'){
+                $brand_filter = implode("','", $data['category']);
+                $query .= "
+                 AND categorie IN('".$brand_filter."')
+                ";
+            }
+            if(isset($data['city']) && !empty($data['city'])){
+                $brand_filter = implode("','", $data['city']);
+                $query .= "
+                 AND ville IN('".$brand_filter."')
+                ";
+            }
+            if(isset($data['capacity']) && !empty($data['capacity'])){
+                $query .= "
+                 AND capacite =".$data['capacity']."
+                ";
+            }
 
-        $this->db->bind(':capacity', $data['name']);
+            if(isset($data['date_depart']) && !empty($data['date_depart'])){
+                $query .= "
+                 AND date_depart > '".$data['date_depart']."' 
+                ";
+            }
+            if(isset($data['date_arrivee']) && !empty($data['date_arrivee'])){
+                $query .= "
+                 AND date_arrivee < '".$data['date_arrivee']."' 
+                ";
+            }
+  
+
+            
        
+    }
+        $this->db->query($query);
         $res=$this->db->resultSet();
               
         return $res;
@@ -65,6 +99,7 @@ if($category == 'all'){
                             
        return $res;
      }
+
 
 
 }

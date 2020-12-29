@@ -167,6 +167,7 @@
             <div class="col-md-12 col-sm-6 col-xs-6">
                 <div class="row">
                     <div id="product-slick-2" class="product-slick">
+                  
                         <!-- Product Single -->
                         <?php foreach($data['topSalle'] as $produit){ ?>
                         <div class="product product-single">
@@ -234,7 +235,7 @@
         </div>
         <!-- /row -->
 
-        <?php if(isset($_SESSION['user_id'])){  ?>
+        <?php if(isset($_SESSION['user_id']) ){  ?>
         <!-- row -->
         <div class="row">
             <!-- section title -->

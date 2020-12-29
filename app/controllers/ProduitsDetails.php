@@ -101,7 +101,9 @@ class ProduitsDetails extends Controller {
 
         $this->userModel->addAvisInSalleTable($data['produit_detail'][0]->id_salle,''.$data['avisTotal']);
 
-        $data['pikeforyou'] = $this->userModel->pikeForYou();
+        if(!empty($_SESSION['user_pays'])){
+            $data['pikeforyou'] = $this->userModel->pikeForYou();
+        }
 
         $this->view('reservation_details', $data);
     }

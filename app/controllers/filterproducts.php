@@ -14,11 +14,6 @@ class filterproducts extends Controller {
             'name' => ''
 
         ];
-        if(isset($_POST['name'])){
-            $data['name']=$_POST['name'];
-        }
-        
-
 
         $data['afficheAllData'] =  $this->userModel->afficheAllData($category);
          

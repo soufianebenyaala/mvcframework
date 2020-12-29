@@ -42,10 +42,10 @@ class Checkout {
         if(!empty($_SESSION['panier'])){
             $tab =explode('.',substr($_SESSION['panier'], 1));
             foreach($tab as $id){
-                $this->db->query("UPDATE produit SET etat = 'occupe'  WHERE id_produit = $id");
+                $this->db->query("UPDATE produit SET etat = 'occupe'  WHERE id_produit = :id_produit");
                 $id = intval($id);
                 $this->db->bind(':id_produit', $id);
-                $this->db->bind(':etat', 'occupe');
+               
               //Execute function
                        //Execute function
                 if ($this->db->execute()) {
