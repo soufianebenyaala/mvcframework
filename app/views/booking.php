@@ -66,10 +66,10 @@
                 <div class="aside">
                     <h3 class="aside-title">Filter By Category :</h3>
                     <ul class="list-links">
-                        <li><input type="checkbox" id="category" class="category product_check "  value="Conference, Convention"> Conférence, Convention</li>
-                        <li><input type="checkbox" id="category" class="category product_check"  value="Reunion, Formation"> Réunion, Formation</li>
-                        <li><input type="checkbox" id="category" class="category product_check"  value="Soiree entreprise"> Soirée entreprise</li>
-                        <li><input type="checkbox" id="category" class="category product_check" value="Seminaire residentiel"> Séminaire résidentiel</li>
+                        <li><input type="checkbox" id="category" class="category product_check "  value="Conference, Convention" <?=explode("/",$_GET["url"])[2] ==  'Conference, Convention' ? 'checked' : '' ?>> Conférence, Convention</li>
+                        <li><input type="checkbox" id="category" class="category product_check Reunion,Formation"  value="Reunion, Formation" <?=explode("/",$_GET["url"])[2] ==  'Reunion, Formation' ? 'checked' : '' ?>> Réunion, Formation</li>
+                        <li><input type="checkbox" id="category" class="category product_check"  value="Soiree entreprise" <?=explode("/",$_GET["url"])[2] ==  'Soiree entreprise' ? 'checked' : '' ?>> Soirée entreprise</li>
+                        <li><input type="checkbox" id="category" class="category product_check" value="Seminaire residentiel" <?=explode("/",$_GET["url"])[2] ==  'Seminaire residentiel' ? 'checked' : '' ?>> Séminaire résidentiel</li>
                     </ul>
                 </div>
                 <!-- /aside widget -->
@@ -149,7 +149,7 @@
                 <div id="store">
                    
                     <!-- row -->
-                    <div id="result" >
+                    <div class="row" id="result">
 
                     </div>
                     <!-- /row -->
@@ -169,7 +169,8 @@ $(document).ready(function(){
 filter_data();
 
 function filter_data()
-{
+{   
+    var searchInput = "<?= $data["searchsearch"] ?>"
     var action = 'fetch_data';
     var category = get_filter('category');
     var city = get_filter('city');
@@ -189,12 +190,13 @@ function filter_data()
     {
         
         category ="<?=explode("/",$_GET["url"])[2]?>";
+
     }
     var ur = "<?php echo URLROOT; ?>productsajax/filterproduct/"+category;
     $.ajax({            
         url:ur,
         method:"POST",  
-        data:{action:action, category:category, city:city ,date_arrivee:date_arrivee ,date_depart:date_depart,capacity:capacity,minPrice:minPrice,maxPrice:maxPrice},
+        data:{action:action,searchsearch:searchInput, category:category, city:city ,date_arrivee:date_arrivee ,date_depart:date_depart,capacity:capacity,minPrice:minPrice,maxPrice:maxPrice},
         success:function(data)
         {
          $("#result").html(data);  

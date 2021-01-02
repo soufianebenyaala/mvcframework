@@ -15,8 +15,12 @@ class filterproducts extends Controller {
 
         ];
 
-        $data['afficheAllData'] =  $this->userModel->afficheAllData($category);
-         
+        if(!empty($_POST["searchsearch"])){
+                $data["searchsearch"] = $_POST["searchsearch"];
+        }else{
+            $data['afficheAllData'] =  $this->userModel->afficheAllData($category);
+        }
+        
         $this->view('booking', $data);
     }
 

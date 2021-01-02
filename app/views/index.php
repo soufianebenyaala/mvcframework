@@ -17,7 +17,7 @@
                     <div class="banner-caption">
                         <h1 class="primary-color">Réunion, Formation<br>
                         </h1>
-                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Réunion,Formation"><button class="primary-btn">booking Now</button></a>
+                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Reunion, Formation"><button class="primary-btn">booking Now</button></a>
                     </div>
                 </div>
                 <!-- /banner -->
@@ -27,7 +27,7 @@
                     <img src="<?php echo URLROOT; ?>public/img/photo3.jpg" alt="">
                     <div class="banner-caption">
                         <h1 class="white-color">Soirée entreprise</h1>
-                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Soiréeentreprise"><button class="primary-btn">booking Now</button></a>
+                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Soiree entreprise"><button class="primary-btn">booking Now</button></a>
                     </div>
                 </div>
                 <!-- /banner -->
@@ -37,7 +37,7 @@
                     <img src="<?php echo URLROOT; ?>public/img/photo4.png" alt="">
                     <div class="banner-caption">
                         <h1 class="white-color">Séminaire résidentiel</h1>
-                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Séminairerésidentiel"><button class="primary-btn">booking Now</button></a>
+                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Seminaire residentiel"><button class="primary-btn">booking Now</button></a>
                     </div>
                 </div>
                 <!-- /banner -->
@@ -47,7 +47,7 @@
                     <div class="banner-caption text-center">
                         <h1>Conférence, Convention</h1>
                         
-                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Conférence,Convention"><button class="primary-btn">booking Now</button></a>
+                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Conference, Convention"><button class="primary-btn">booking Now</button></a>
                     </div>
                 </div>
                 <!-- /banner -->

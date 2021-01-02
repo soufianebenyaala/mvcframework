@@ -425,16 +425,17 @@ textarea.input {
 }
 
 .header-search>form .search-input {
-    padding-left: 150px;
+    padding-left: 10px;
     padding-right: 45px;
 }
 
-.header-search>form .search-categories {
+
+/*.header-search>form .search-categories {
     position: absolute;
     left: 0px;
     top: 0px;
     width: 135px;
-}
+}*/
 
 .header-search>form .search-btn {
     position: absolute;

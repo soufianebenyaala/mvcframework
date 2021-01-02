@@ -29,10 +29,13 @@ class productsajax extends Controller {
         if(!empty($_POST["capacity"])){
             $data["capacity"] = $_POST["capacity"];
         }
+        if(!empty($_POST["searchsearch"])){
+            $data["searchsearch"] = $_POST["searchsearch"];
+        }
         
         $output ="";
         if(!empty($this->userModel->filterproduct($data))){
-
+        if(isset($_POST['action'])){
             foreach($this->userModel->filterproduct($data) as $tab){
                 $output .='
                 <div class="col-md-4 col-sm-6 col-xs-6">
@@ -71,12 +74,22 @@ class productsajax extends Controller {
     
             } 
        
-        }else{
+        }
 
-            $output = '<h3>No Data Found '. $_POST["date_depart"].'</h3>';
-       
-    } echo $output;
+        if(isset($_GET['search'])){
+            $list='';
+            foreach($this->userModel->filterproduct($data) as $tab){
+                $list .='<li><a href="">'.$tab->titre.'</a></li>';
+
+            }
+            $output='<div class="category-nav">
+            <ul class="category-list">'.$list.'</ul>
+        </div>';
+        }
+    }else{
+        $output = '<h3>No Data Found </h3>';
     }
-    
+    echo $output;
+}   
   
 }

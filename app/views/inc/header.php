@@ -14,16 +14,14 @@
 
                 <!-- Search -->
                 <div class="header-search">
-                    <form>
-                        <input class="input search-input" type="text" placeholder="Enter your keyword">
-                        <select class="input search-categories">
-                            <option value="0">All Categories</option>
-                            <option value="1">office</option>
-                            <option value="1">meeting</option>
-                            <option value="1">training</option>
-                        </select>
-                        <button class="search-btn"><i class="fa fa-search"></i></button>
+                    <form action="<?php echo URLROOT; ?>filterproducts/filterproduct/all" method="POST">
+                        <input class="input search-input" type="text" name="searchsearch" placeholder="Enter your keyword">
+                        <div id="result-search"></div>
+
+                        <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
+
+
                 </div>
                 <!-- /Search -->
             </div>
@@ -38,23 +36,27 @@
                             <strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
                         </div>
                         <?php if(isset($_SESSION['user_id'])){  ?>
-                       
-							<a href="<?php echo URLROOT; ?>users/logout" class="text-uppercase">Logout</a>
+
+                        <a href="<?php echo URLROOT; ?>users/logout" class="text-uppercase">Logout</a>
                         <?php }else{  ?>
-							<a href="<?php echo URLROOT; ?>users/login" class="text-uppercase">Login</a> / <a
+                        <a href="<?php echo URLROOT; ?>users/login" class="text-uppercase">Login</a> / <a
                             href="<?php echo URLROOT; ?>users/register" class="text-uppercase">Join</a>
                         <?php }  ?>
                         <ul class="custom-menu">
-                        <?php if(isset($_SESSION['user_id'])){  ?>
-                       <li><a href="<?php echo URLROOT; ?>profiles/profile"><i class="fa fa-user-o"></i> My Account</a></li>
-                       <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
-                       <li><a href="<?php echo URLROOT; ?>users/logout"><i class="fa fa-unlock-alt"></i>Logout</a></li>
-                   <?php }else{  ?>
-                    
-                     
-                            <li><a href="<?php echo URLROOT; ?>users/login"><i class="fa fa-unlock-alt"></i> Login</a></li>
-                            <li><a href="<?php echo URLROOT; ?>users/register"><i class="fa fa-user-plus"></i> Create An Account</a></li>
-                            <?php }  ?>    
+                            <?php if(isset($_SESSION['user_id'])){  ?>
+                            <li><a href="<?php echo URLROOT; ?>profiles/profile"><i class="fa fa-user-o"></i> My
+                                    Account</a></li>
+                            <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
+                            <li><a href="<?php echo URLROOT; ?>users/logout"><i class="fa fa-unlock-alt"></i>Logout</a>
+                            </li>
+                            <?php }else{  ?>
+
+
+                            <li><a href="<?php echo URLROOT; ?>users/login"><i class="fa fa-unlock-alt"></i> Login</a>
+                            </li>
+                            <li><a href="<?php echo URLROOT; ?>users/register"><i class="fa fa-user-plus"></i> Create An
+                                    Account</a></li>
+                            <?php }  ?>
                         </ul>
                     </li>
                     <!-- /Account -->
@@ -94,7 +96,8 @@
                                     </div>
                                 </div>
                                 <div class="shopping-cart-btns">
-                                <a href="<?php echo URLROOT; ?>paniers/panier"><button class="main-btn">View Cart</button></a>
+                                    <a href="<?php echo URLROOT; ?>paniers/panier"><button class="main-btn">View
+                                            Cart</button></a>
                                     <button class="primary-btn">Checkout <i
                                             class="fa fa-arrow-circle-right"></i></button>
                                 </div>
@@ -102,7 +105,7 @@
                         </div>
                     </li>
                     <!-- /Cart -->
-                    <?php }  ?>   
+                    <?php }  ?>
                     <!-- Mobile nav toggle-->
                     <li class="nav-toggle">
                         <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
@@ -116,3 +119,37 @@
     <!-- container -->
 </header>
 <!-- /HEADER -->
+<script>
+$(document).ready(function() {
+    $('.search-input').keyup(function() {
+        $('#result-search').html('');
+
+        var search = $(this).val();
+        var action = "search";
+        var ur = "<?php echo URLROOT; ?>productsajax/filterproduct/aaa";
+
+        if (search != "") {
+            $.ajax({
+                type: 'GET',
+                url: ur,
+                data: {
+                    search: search,
+                    action: action
+                },
+                success: function(data) {
+                    if (data != "") {
+                        $('#result-search').append(data);
+                        console.log(search);
+                    } else {
+                        document.getElementById('result-search').innerHTML =
+                            "<div>Aucun utilisateur</div>"
+                    }
+                }
+            });
+
+        }
+
+    });
+
+});
+</script>

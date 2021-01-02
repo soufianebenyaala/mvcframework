@@ -7,18 +7,25 @@ class filterproduct {
     }
     //Find last 4 offres (produit) add with admin
     public function filterproduct($data){
-        if(isset($_POST["action"]))
+        if(isset($_POST["action"]) OR !empty($data['searchsearch']))
         {
             $query = 
             "SELECT * FROM produit,salle WHERE produit.id_salle=salle.id_salle AND etat = 'libre'
-             and prix between ".$data['minPrice']." and ".$data['maxPrice'];
+             ";
             if(isset($data['minPrice'])&& !empty($data['minPrice']) && isset($data['maxPrice'])&& !empty($data['maxPrice'])){ 
 
                 $query = 
                 "SELECT * FROM produit,salle WHERE produit.id_salle=salle.id_salle AND etat = 'libre'
                and prix between ".$data['minPrice']." and ".$data['maxPrice'];
                }
-            if(isset($data['category']) &&  $data['category'] != 'all'){
+            
+            if(isset($data['category']) &&  $data['category'] == 'Reunion, Formation'){
+                $brand_filter = $data['category'];
+                $query .= "
+                 AND categorie = '".$brand_filter."'
+                ";
+            }            
+            elseif(isset($data['category']) &&  $data['category'] != 'all'){
                 $brand_filter = implode("','", $data['category']);
                 $query .= "
                  AND categorie IN('".$brand_filter."')
@@ -46,12 +53,29 @@ class filterproduct {
                  AND date_arrivee < '".$data['date_arrivee']."' 
                 ";
             }
-  
+            if(isset($data['searchsearch']) && !empty($data['searchsearch'])){
+                $ch = '%'.$data['searchsearch'].'%';
+                $query .= "
+                 AND titre LIKE '".$ch."' 
+                ";
+            }
+        }
 
-            
-       
-    }
+        if(isset($_GET["action"])){
+            if(isset($_GET['search'])){
+                $user = (String) trim($_GET['search']);
+             
+                $query = "SELECT *
+                  FROM produit,salle WHERE produit.id_salle=salle.id_salle AND 
+                  titre LIKE :user
+                  LIMIT 5";         
+              } 
+
+        }
         $this->db->query($query);
+        if(isset($_GET['search'])){
+        $this->db->bind(':user','%'.$user.'%');
+        }
         $res=$this->db->resultSet();
               
         return $res;
