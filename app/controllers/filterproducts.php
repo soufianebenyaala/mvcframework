@@ -11,12 +11,14 @@ class filterproducts extends Controller {
             'date_arrivee'=>'',
             'date_dapart'=>'',
             'error'=>'',
-            'name' => ''
+            'name' => '',
+            'searchsearch' =>""
 
         ];
 
         if(!empty($_POST["searchsearch"])){
                 $data["searchsearch"] = $_POST["searchsearch"];
+                $_SESSION["search"] = $_POST["searchsearch"];
         }else{
             $data['afficheAllData'] =  $this->userModel->afficheAllData($category);
         }

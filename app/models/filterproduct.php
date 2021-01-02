@@ -7,7 +7,7 @@ class filterproduct {
     }
     //Find last 4 offres (produit) add with admin
     public function filterproduct($data){
-        if(isset($_POST["action"]) OR !empty($data['searchsearch']))
+        if(isset($_POST["action"]))
         {
             $query = 
             "SELECT * FROM produit,salle WHERE produit.id_salle=salle.id_salle AND etat = 'libre'

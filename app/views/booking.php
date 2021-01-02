@@ -170,7 +170,8 @@ filter_data();
 
 function filter_data()
 {   
-    var searchInput = "<?= $data["searchsearch"] ?>"
+    var searchInput ="";
+    searchInput = "<?= $data["searchsearch"] ?>";
     var action = 'fetch_data';
     var category = get_filter('category');
     var city = get_filter('city');
@@ -198,7 +199,7 @@ function filter_data()
         method:"POST",  
         data:{action:action,searchsearch:searchInput, category:category, city:city ,date_arrivee:date_arrivee ,date_depart:date_depart,capacity:capacity,minPrice:minPrice,maxPrice:maxPrice},
         success:function(data)
-        {
+        {console.log(data);
          $("#result").html(data);  
         }
     });

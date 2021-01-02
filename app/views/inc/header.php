@@ -15,7 +15,7 @@
                 <!-- Search -->
                 <div class="header-search">
                     <form action="<?php echo URLROOT; ?>filterproducts/filterproduct/all" method="POST">
-                        <input class="input search-input" type="text" name="searchsearch" placeholder="Enter your keyword">
+                        <input class="input search-input" type="text" name="searchsearch" placeholder="Enter your keyword" value="<?php if(!empty($data["searchsearch"])){echo $data["searchsearch"];} ?>">
                         <div id="result-search"></div>
 
                         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
