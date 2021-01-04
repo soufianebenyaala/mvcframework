@@ -17,7 +17,6 @@
                     <form action="<?php echo URLROOT; ?>filterproducts/filterproduct/all" method="POST">
                         <input class="input search-input" type="text" name="searchsearch" placeholder="Enter your keyword" value="<?php if(!empty($data["searchsearch"])){echo $data["searchsearch"];} ?>">
                         <div id="result-search"></div>
-
                         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
 
@@ -46,7 +45,7 @@
                             <?php if(isset($_SESSION['user_id'])){  ?>
                             <li><a href="<?php echo URLROOT; ?>profiles/profile"><i class="fa fa-user-o"></i> My
                                     Account</a></li>
-                            <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
+                            <li><a href="<?php echo URLROOT; ?>Wishlists/wishlist"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
                             <li><a href="<?php echo URLROOT; ?>users/logout"><i class="fa fa-unlock-alt"></i>Logout</a>
                             </li>
                             <?php }else{  ?>
@@ -62,48 +61,20 @@
                     <!-- /Account -->
                     <?php if(isset($_SESSION['user_id'])){  ?>
                     <!-- Cart -->
-                    <li class="header-cart dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                    
+                    <li class="header-cart dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" >
                             <div class="header-btns-icon">
+                            <a href="<?php echo URLROOT; ?>paniers/panier">
                                 <i class="fa fa-shopping-cart"></i>
+                                </a>
                                 <?php if(isset($_SESSION['panier'])){  ?>
                                 <span class="qty"><?= sizeof(explode('.',substr($_SESSION['panier'], 1)));?></span>
                                 <?php } ?>
                             </div>
                         </a>
-                        <div class="custom-menu">
-                            <div id="shopping-cart">
-                                <div class="shopping-cart-list">
-                                    <div class="product product-widget">
-                                        <div class="product-thumb">
-                                            <img src="./img/thumb-product01.jpg" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-price">$32.50</h3>
-                                            <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-                                        </div>
-                                        <button class="cancel-btn"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <div class="product product-widget">
-                                        <div class="product-thumb">
-                                            <img src="./img/thumb-product01.jpg" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-price">$32.50</h3>
-                                            <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-                                        </div>
-                                        <button class="cancel-btn"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                </div>
-                                <div class="shopping-cart-btns">
-                                    <a href="<?php echo URLROOT; ?>paniers/panier"><button class="main-btn">View
-                                            Cart</button></a>
-                                    <button class="primary-btn">Checkout <i
-                                            class="fa fa-arrow-circle-right"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                   </li>
+                    
                     <!-- /Cart -->
                     <?php }  ?>
                     <!-- Mobile nav toggle-->

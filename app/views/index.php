@@ -17,7 +17,8 @@
                     <div class="banner-caption">
                         <h1 class="primary-color">Réunion, Formation<br>
                         </h1>
-                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Reunion, Formation"><button class="primary-btn">booking Now</button></a>
+                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Reunion, Formation"><button
+                                class="primary-btn">booking Now</button></a>
                     </div>
                 </div>
                 <!-- /banner -->
@@ -27,27 +28,30 @@
                     <img src="<?php echo URLROOT; ?>public/img/photo3.jpg" alt="">
                     <div class="banner-caption">
                         <h1 class="white-color">Soirée entreprise</h1>
-                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Soiree entreprise"><button class="primary-btn">booking Now</button></a>
+                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Soiree entreprise"><button
+                                class="primary-btn">booking Now</button></a>
                     </div>
                 </div>
                 <!-- /banner -->
-                
-              <!-- banner -->
-              <div class="banner banner-1">
+
+                <!-- banner -->
+                <div class="banner banner-1">
                     <img src="<?php echo URLROOT; ?>public/img/photo4.png" alt="">
                     <div class="banner-caption">
                         <h1 class="white-color">Séminaire résidentiel</h1>
-                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Seminaire residentiel"><button class="primary-btn">booking Now</button></a>
+                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Seminaire residentiel"><button
+                                class="primary-btn">booking Now</button></a>
                     </div>
                 </div>
                 <!-- /banner -->
-                                <!-- banner -->
-                                <div class="banner banner-1">
+                <!-- banner -->
+                <div class="banner banner-1">
                     <img src="<?php echo URLROOT; ?>public/img/photo1.jpg" alt="">
                     <div class="banner-caption text-center">
                         <h1>Conférence, Convention</h1>
-                        
-                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Conference, Convention"><button class="primary-btn">booking Now</button></a>
+
+                        <a href="<?php echo URLROOT; ?>filterproducts/filterproduct/Conference, Convention"><button
+                                class="primary-btn">booking Now</button></a>
                     </div>
                 </div>
                 <!-- /banner -->
@@ -126,12 +130,10 @@
                                 </h2>
                                 <div class="product-btns">
                                     <?php if(isset($_SESSION['user_id'])){  ?>
-                                    <a href="#"><button class="main-btn icon-btn"><i
-                                                class="fa fa-heart"></i></button></a>
+                                    <a href="<?php echo URLROOT; ?>Pages/addWishlist/<?= $produit->id_produit ?>"><button
+                                            class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
 
-                                    <a href="<?php echo URLROOT; ?>paniers/panier/<?= $produit->id_produit ?>"><button
-                                            class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                            Cart</button></a>
+
                                     <?php }else{ ?>
                                     <a href="<?php echo URLROOT; ?>Users/register/<?= $produit->id_produit ?>"><button
                                             class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> log in
@@ -167,7 +169,7 @@
             <div class="col-md-12 col-sm-6 col-xs-6">
                 <div class="row">
                     <div id="product-slick-2" class="product-slick">
-                  
+
                         <!-- Product Single -->
                         <?php foreach($data['topSalle'] as $produit){ ?>
                         <div class="product product-single">
@@ -208,12 +210,11 @@
                                 </h2>
                                 <div class="product-btns">
                                     <?php if(isset($_SESSION['user_id'])){  ?>
-                                    <a href="#"><button class="main-btn icon-btn"><i
-                                                class="fa fa-heart"></i></button></a>
+                                    <a href="<?php echo URLROOT; ?>Pages/addWishlist/<?= $produit->id_produit ?>"><button
+                                            class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
 
-                                    <a href="<?php echo URLROOT; ?>paniers/panier/<?= $produit->id_produit ?>"><button
-                                            class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                            Cart</button></a>
+
+
                                     <?php }else{ ?>
                                     <a href="<?php echo URLROOT; ?>Users/register/<?= $produit->id_produit ?>"><button
                                             class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> log in
@@ -256,32 +257,30 @@
                             <li><span><?= $produit->date_depart ?></span></li>
                             <li><span><?= $produit->date_arrivee ?></span></li>
                         </ul>
-                        <a
-                                    href="<?php echo URLROOT; ?>ProduitsDetails/produitdetail/<?= $produit->id_produit ?>">
-                                    <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
-                                        view</button> </a>
-                        <img src="<?php echo URLROOT."public/img/salle date/".$produit->titre.'/'.$produit->photo_1; ?>" alt="">
+                        <a href="<?php echo URLROOT; ?>ProduitsDetails/produitdetail/<?= $produit->id_produit ?>">
+                            <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                view</button> </a>
+                        <img src="<?php echo URLROOT."public/img/salle date/".$produit->titre.'/'.$produit->photo_1; ?>"
+                            alt="">
                     </div>
                     <div class="product-body">
                         <h3 class="product-price">$32.50</h3>
                         <div class="product-rating">
-                        <i class="fa fa-star<?php  if($produit->avis == 0){echo '-o empty';}?>"></i>
-                                    <i
-                                        class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1){echo '-o empty';}?>"></i>
-                                    <i
-                                        class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1 OR $produit->avis == 2 ){echo '-o empty';}?>"></i>
-                                    <i
-                                        class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1 OR $produit->avis == 2 OR $produit->avis == 3 ){echo '-o empty';} ?>"></i>
-                                    <i
-                                        class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1 OR $produit->avis == 2 OR $produit->avis == 3  OR $produit->avis == 4 ){echo '-o empty';}?>"></i>
+                            <i class="fa fa-star<?php  if($produit->avis == 0){echo '-o empty';}?>"></i>
+                            <i
+                                class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1){echo '-o empty';}?>"></i>
+                            <i
+                                class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1 OR $produit->avis == 2 ){echo '-o empty';}?>"></i>
+                            <i
+                                class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1 OR $produit->avis == 2 OR $produit->avis == 3 ){echo '-o empty';} ?>"></i>
+                            <i
+                                class="fa fa-star<?php  if($produit->avis == 0 OR $produit->avis == 1 OR $produit->avis == 2 OR $produit->avis == 3  OR $produit->avis == 4 ){echo '-o empty';}?>"></i>
                         </div>
                         <h2 class="product-name"><a href="#"><?= $produit->titre ?></a></h2>
                         <div class="product-btns">
-                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                            <a href="<?php echo URLROOT; ?>Pages/addWishlist/<?= $produit->id_produit ?>"><button
+                                    class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
 
-                            <a href="<?php echo URLROOT; ?>paniers/panier/<?= $produit->id_produit ?>"><button
-                                            class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                            Cart</button></a>
                         </div>
                     </div>
                 </div>
@@ -308,4 +307,6 @@
 
 
 
-<?php require "inc/footer.php" ?>
+<?php require "inc/footer.php" ;
+
+?>

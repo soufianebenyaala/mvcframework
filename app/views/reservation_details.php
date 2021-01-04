@@ -102,7 +102,7 @@
                             <?php }  ?>
                             <div class="pull-right">
                                 <?php if(isset($_SESSION['user_id'])){  ?>
-                                <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <a href="<?php echo URLROOT; ?>ProduitsDetails/addWishlist/<?= $produit_detail->id_produit ?>"><button class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
                                 <?php }  ?>
                             </div>
                         </div>
@@ -246,11 +246,8 @@
                         </div>
                         <h2 class="product-name"><a href="#"><?= $produit->titre ?></a></h2>
                         <div class="product-btns">
-                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                        <a href="<?php echo URLROOT; ?>ProduitsDetails/addWishlist/<?= $produit->id_produit ?>"><button class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
 
-                            <a href="<?php echo URLROOT; ?>paniers/panier/<?= $produit->id_produit ?>"><button
-                                            class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                            Cart</button></a>
                         </div>
                     </div>
                 </div>

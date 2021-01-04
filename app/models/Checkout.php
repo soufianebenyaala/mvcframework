@@ -61,5 +61,28 @@ class Checkout {
 
 
 }
+
+   public function commandeid(){
+               //Prepared statement
+               $this->db->query('SELECT * FROM commande
+               WHERE id_commande = (SELECT MAX(id_commande) FROM commande) ');
+
+ 
+               $res=$this->db->resultSet();
+                     
+               return $res;
+   }
+
+   public function commandeDetail($id){
+    //Prepared statement
+    $this->db->query('SELECT * FROM produit,salle
+    WHERE produit.id_salle=salle.id_salle
+    AND id_produit = :id');
+
+    $this->db->bind(':id', $id);
+    $res=$this->db->resultSet();
+          
+    return $res;
+}
 }
 

@@ -36,9 +36,8 @@ class Home {
         $this->db->query("SELECT *
         FROM produit
         INNER JOIN salle ON salle.id_salle=produit.id_salle
-        INNER JOIN avis ON salle.id_salle =avis.id_salle
         WHERE pays = :pays
-        ORDER BY produit.id_produit ASC
+        ORDER BY id_produit DESC
         LIMIT 4");
 
         $this->db->bind(':pays', $_SESSION['user_pays']);
@@ -46,6 +45,33 @@ class Home {
         $res=$this->db->resultSet();
               
         return $res; 
+}
+
+public function addWishlist($ch){
+    $this->db->query("UPDATE membre SET wishlist = :wishlist  WHERE id_membre = :id");
+            
+    $this->db->bind(':id', $_SESSION['user_id']);
+    $this->db->bind(':wishlist',   $ch);
+           
+    if ($this->db->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+public function wishlist(){
+    //Prepared statement
+    $this->db->query('SELECT wishlist FROM membre
+                      WHERE id_membre = :id');
+         
+    $this->db->bind(':id', $_SESSION['user_id']);
+                   
+    $res=$this->db->resultSet();
+                       
+    return $res;
+   
 }
 
 

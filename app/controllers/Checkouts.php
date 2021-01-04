@@ -107,11 +107,38 @@ class Checkouts extends Controller {
         
     }
 
-    public function valide(){
+    public function valide($montant){
+        $ch ="";
+        $lesproduit = explode('.',$this->userModel->commandeid()[0]->lesproduits);
+        foreach($lesproduit as $produitid){
+            $produit = $this->userModel->commandeDetail($produitid)[0];
+            $ch .= "
+            - nom de salle :  ".$produit->titre."
+            - date de depart :  ".$produit->date_depart."
+            - date de arrivee :  ".$produit->date_arrivee."
+            - capacite :  ".$produit->capacite."
+            - catagorie :  ".$produit->categorie."
+            - prix :  ".$produit->prix."
+            ";
+        }    
+
+        $to      = $_SESSION['user_email'];
+        $subject = 'Commande passe avec succès';
+        
+        $message = 'les produits sont : '.$ch."
+        TVA egale à 10% 
+        prix total : $".$montant."";
+
+        $headers = 'From: webmaster@example.com' . "\r\n" .
+        'Reply-To: webmaster@example.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+   
+       mail($to, $subject, $message, $headers);
 
         $this->view("valide");
 
     }
-
   
 }
+
+?>

@@ -61,11 +61,7 @@ class productsajax extends Controller {
                             </div>
                             <h2 class="product-name">'. $tab->titre.'</h2>
                             <div class="product-btns">
-                                <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-    
-                                <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add
-                                    to
-                                    Cart</button>
+                            <a href="'.URLROOT.'Wishlists/addWishlist/'.$tab->id_produit.'"><button class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
                             </div>
                         </div>
                     </div>
@@ -79,7 +75,7 @@ class productsajax extends Controller {
         if(isset($_GET['search'])){
             $list='';
             foreach($this->userModel->filterproduct($data) as $tab){
-                $list .='<li><a href="">'.$tab->titre.'</a></li>';
+                $list .='<li><a href="filterproducts/filterproduct/all">'.$tab->titre.'</a></li>';
 
             }
             $output='<div class="category-nav">
@@ -87,9 +83,9 @@ class productsajax extends Controller {
         </div>';
         }
     }else{
-        $output = '<h3>No Data Found </h3>';
+        $output = '<img src="'.URLROOT.'public/img/404_not_found.gif" style="width:100%;height:100%;">';
     }
     echo $output;
 }   
-  
+
 }

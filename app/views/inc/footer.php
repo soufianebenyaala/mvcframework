@@ -37,7 +37,7 @@
 						<ul class="list-links">
 						<?php if(isset($_SESSION['user_id'])){  ?>
                        <li><a href="<?php echo URLROOT; ?>profiles/profile"><i class="fa fa-user-o"></i> My Account</a></li>
-                       <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
+                       <li><a href="<?php echo URLROOT; ?>Wishlists/wishlist"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
                       
                    <?php }else{  ?>
                     

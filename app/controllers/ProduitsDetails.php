@@ -121,6 +121,19 @@ class ProduitsDetails extends Controller {
         }
         return round($total, 0);
     }
+
+    public function addWishlist($id){
+        var_dump( $this->userModel->wishlist()[0]->wishlist);
+
+        $ch = $this->userModel->wishlist()[0]->wishlist;
+        $ch =$ch.'/'.$id;
+        var_dump($ch);
+        $this->userModel->addWishlist($ch);
+
+        header('location:' . URLROOT . 'ProduitsDetails/produitdetail/'.$id);
+    }
+
+
     
   
 }

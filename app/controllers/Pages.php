@@ -17,5 +17,17 @@ class Pages extends Controller {
         $data['last4Offers'] = $this->userModel->last4Offers();
         $this->view('index', $data);
     }
+
+    
+    public function addWishlist($id){
+        var_dump( $this->userModel->wishlist()[0]->wishlist);
+
+        $ch = $this->userModel->wishlist()[0]->wishlist;
+        $ch =$ch.'/'.$id;
+        var_dump($ch);
+        $this->userModel->addWishlist($ch);
+
+        header('location:' . URLROOT . 'Pages/index');
+    }
   
 }

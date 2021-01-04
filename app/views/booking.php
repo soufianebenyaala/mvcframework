@@ -223,4 +223,10 @@ $('.product_check').click(function(){
 
 });
 </script>
-<?php require "inc/footer.php" ?>
+
+
+
+
+<?php require "inc/footer.php" ;
+ 
+?>
