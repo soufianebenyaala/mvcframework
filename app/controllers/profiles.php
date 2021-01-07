@@ -64,7 +64,7 @@ class profiles extends Controller {
                 if($fileSize < 1000000){
                 $fileNameNew = $_SESSION['user_id'].".".$fileActualExt;
                 $fileDestination = IMGROOT.'/public/img/users/'.$fileNameNew;
-                var_dump($fileDestination);
+                
                 move_uploaded_file($fileTmpName,$fileDestination);
             }else{
                 $data['photoError'] ="Your file is too big!";
