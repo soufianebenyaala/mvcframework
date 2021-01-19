@@ -124,6 +124,17 @@ if($category == 'all'){
        return $res;
      }
 
-
+  public function allcity(){
+              //Prepared statement
+              $this->db->query("SELECT ville FROM produit
+              INNER JOIN salle ON salle.id_salle=produit.id_salle 
+              
+              AND etat = 'libre'
+              group by ville");
+                $this->db->bind(':id',$_SESSION['user_id']);
+              $res=$this->db->resultSet();
+                    
+              return $res;
+  }
 
 }

@@ -181,6 +181,7 @@ class Users extends Controller {
                 }
             }
         }
+        $data['country']= $this->userModel->country();
         $this->view('register', $data);
         
     }

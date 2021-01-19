@@ -69,7 +69,18 @@
                                 <i class="fa fa-shopping-cart"></i>
                                 </a>
                                 <?php if(isset($_SESSION['panier'])){  ?>
-                                <span class="qty"><?= sizeof(explode('.',substr($_SESSION['panier'], 1)));?></span>
+                                <?php 
+                                if($_SESSION['panier'] == "."){
+                                    $nbrePorduit=null;
+                                }else{
+                                    if(explode('.',substr($_SESSION['panier'], 1))[0] == ""){
+                                        $nbrePorduit =sizeof(explode('.',substr($_SESSION['panier'], 1)))-1; 
+                                    }else{
+                                        $nbrePorduit =sizeof(explode('.',substr($_SESSION['panier'], 1))); 
+                                    }
+                                    ?> <span class="qty"><?= $nbrePorduit?></span><?php
+                                }?>
+                                
                                 <?php } ?>
                             </div>
                         </a>

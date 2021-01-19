@@ -10,7 +10,7 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-            <form id="checkout-form" class="clearfix"  method="POST" action="<?php echo URLROOT; ?>users/register" >
+            <form id="checkout-form" class="clearfix" method="POST" action="<?php echo URLROOT; ?>users/register">
                 <div class="col-md-7">
 
                     <div class="billing-details">
@@ -22,7 +22,7 @@
                             <div>
                                 <label for="First Name">First Name</label>
                             </div>
-                            <input class="input"  type="text" name="first-name" placeholder="First Name">
+                            <input class="input" type="text" name="first-name" placeholder="First Name">
                             <?php 
                                   if(!empty($data['first_nameError']))
                                  { echo"<br><div class='alert alert-danger' role='alert'>
@@ -34,7 +34,7 @@
                             <div>
                                 <label for="Last Name">Last Name</label>
                             </div>
-                            <input class="input"   type="text" name="last-name" placeholder="Last Name">
+                            <input class="input" type="text" name="last-name" placeholder="Last Name">
                             <?php 
                                   if(!empty($data['last_nameError']))
                                  { echo"<br><div class='alert alert-danger' role='alert'>
@@ -46,7 +46,7 @@
                             <div>
                                 <label for="pseudo">pseudo</label>
                             </div>
-                            <input class="input"  type="text" name="pseudo" placeholder="pseudo">
+                            <input class="input" type="text" name="pseudo" placeholder="pseudo">
                             <?php 
                                   if(!empty($data['pseudoError']))
                                  { echo"<br><div class='alert alert-danger' role='alert'>
@@ -56,10 +56,10 @@
                         </div>
                         <div class="form-group">
                             <div>
-                                <label  for="Sexe">Sexe</label>
+                                <label for="Sexe">Sexe</label>
                             </div>
-                            <input type="radio" name="Sexe" value="F"  checked>	&nbsp; Woman 	&nbsp;	&nbsp;	&nbsp;	&nbsp;
-                            <input  type="radio" name="Sexe"  value="H">	&nbsp; Man
+                            <input type="radio" name="Sexe" value="F" checked> &nbsp; Woman &nbsp; &nbsp; &nbsp; &nbsp;
+                            <input type="radio" name="Sexe" value="H"> &nbsp; Man
                             <?php 
                                   if(!empty($data['sexeError']))
                                  { echo"<br><div class='alert alert-danger' role='alert'>
@@ -67,13 +67,13 @@
                                 </div>";}
                                 ?>
                         </div>
-                        
+
 
                         <div class="form-group">
                             <div>
                                 <label for="Email">Email</label>
                             </div>
-                            <input class="input"   type="email" name="email" placeholder="Email">
+                            <input class="input" type="email" name="email" placeholder="Email">
                             <?php 
                                   if(!empty($data['emailError']))
                                  { echo"<br><div class='alert alert-danger' role='alert'>
@@ -85,7 +85,7 @@
                             <div>
                                 <label for="Address">Address</label>
                             </div>
-                            <input class="input"   type="text" name="address" placeholder="Address">
+                            <input class="input" type="text" name="address" placeholder="Address">
                             <?php 
                                   if(!empty($data['addresseError']))
                                  { echo"<br><div class='alert alert-danger' role='alert'>
@@ -97,7 +97,7 @@
                             <div>
                                 <label for="City">City</label>
                             </div>
-                            <input class="input"  type="text" name="city" placeholder="City">
+                            <input class="input" type="text" name="city" placeholder="City">
                             <?php 
                                   if(!empty($data['cityError']))
                                  { echo"<br><div class='alert alert-danger' role='alert'>
@@ -110,16 +110,18 @@
                                 <label for="Country">Country</label>
                             </div>
                             <select class="input" name="country">
-                            <option value="Tunisie" >Tunisie</option>
-                            <option value="Japan">Japan</option>
-                            <option value="Canada">Canada</option>
+                                <?php foreach ($data['country']  as $datta) {
+                                            foreach ($datta  as $dattta) { ?>
+                                <option value="<?= trim($dattta) ?>"><?= $dattta ?>
+                                </option>
+                                <?php }} ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <div>
                                 <label for="ZIP Code">ZIP Code</label>
                             </div>
-                            <input class="input"  type="text" name="zip_code" placeholder="ZIP Code">
+                            <input class="input" type="text" name="zip_code" placeholder="ZIP Code">
                             <?php 
                                   if(!empty($data['zip_codeError']))
                                  { echo"<br><div class='alert alert-danger' role='alert'>
@@ -131,7 +133,7 @@
                             <div>
                                 <label for="Telephone">Telephone</label>
                             </div>
-                            <input class="input"   type="tel" name="tel" placeholder="Telephone">
+                            <input class="input" type="tel" name="tel" placeholder="Telephone">
                             <?php 
                                   if(!empty($data['telError']))
                                  { echo"<br><div class='alert alert-danger' role='alert'>
@@ -155,7 +157,8 @@
                             <div>
                                 <label for="Enter Your Password">Enter Your Password</label>
                             </div>
-                            <input class="input" type="password" name="confirmPassword" placeholder="Enter Your Password">
+                            <input class="input" type="password" name="confirmPassword"
+                                placeholder="Enter Your Password">
                             <?php 
                                   if(!empty($data['confirmPasswordError']))
                                  { echo"<br><div class='alert alert-danger' role='alert'>

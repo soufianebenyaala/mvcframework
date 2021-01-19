@@ -16,6 +16,8 @@
                     <div class="section-title">
                         <h3 class="title">Order Review</h3>
                     </div>
+                    <?php if(isset($_SESSION['panier'])){
+                        if($_SESSION['panier'] != "."){?>
                     <table class="shopping-cart-table table">
                         <thead>
                             <tr>
@@ -59,8 +61,7 @@
                         } }?>
 
                         </tbody>
-                        <?php if(isset($_SESSION['panier'])){
-                        if($_SESSION['panier'] != "."){?>
+
                         <form action="<?= URLROOT ?>Checkouts/checkout" method="POST">
                             <tfoot>
                                 <tr>

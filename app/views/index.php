@@ -130,7 +130,7 @@
                                 </h2>
                                 <div class="product-btns">
                                     <?php if(isset($_SESSION['user_id'])){  ?>
-                                    <a href="<?php echo URLROOT; ?>Pages/addWishlist/<?= $produit->id_produit ?>"><button
+                                    <a href="<?php echo URLROOT; ?>Wishlists/addWishlist/<?= $produit->id_produit ?>"><button
                                             class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
 
 
@@ -210,7 +210,7 @@
                                 </h2>
                                 <div class="product-btns">
                                     <?php if(isset($_SESSION['user_id'])){  ?>
-                                    <a href="<?php echo URLROOT; ?>Pages/addWishlist/<?= $produit->id_produit ?>"><button
+                                    <a href="<?php echo URLROOT; ?>Wishlists/addWishlist/<?= $produit->id_produit ?>"><button
                                             class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
 
 
@@ -236,7 +236,8 @@
         </div>
         <!-- /row -->
 
-        <?php if(isset($_SESSION['user_id']) ){  ?>
+        <?php if(isset($_SESSION['user_id']) ){ 
+            if(!empty($data['pikeforyou']) ){ ?>
         <!-- row -->
         <div class="row">
             <!-- section title -->
@@ -278,7 +279,7 @@
                         </div>
                         <h2 class="product-name"><a href="#"><?= $produit->titre ?></a></h2>
                         <div class="product-btns">
-                            <a href="<?php echo URLROOT; ?>Pages/addWishlist/<?= $produit->id_produit ?>"><button
+                            <a href="<?php echo URLROOT; ?>Wishlists/addWishlist/<?= $produit->id_produit ?>"><button
                                     class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
 
                         </div>
@@ -289,7 +290,7 @@
             <!-- /Product Single -->
         </div>
         <!-- /row -->
-        <?php }  ?>
+        <?php } } ?>
     </div>
     <!-- /container -->
 </div>

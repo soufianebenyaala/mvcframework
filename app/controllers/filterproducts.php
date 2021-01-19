@@ -22,7 +22,7 @@ class filterproducts extends Controller {
         }else{
             $data['afficheAllData'] =  $this->userModel->afficheAllData($category);
         }
-        
+        $data['allcity'] = $this->userModel->allcity();
         $this->view('booking', $data);
     }
 

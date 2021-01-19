@@ -9,8 +9,9 @@ class Home {
 
         //Prepared statement
         $this->db->query("SELECT * FROM produit,salle
-        WHERE produit.id_salle=salle.id_salle AND etat = 'libre' AND id_produit > (SELECT MAX(id_produit) FROM produit)-6 
-        ORDER BY id_produit DESC");
+        WHERE produit.id_salle=salle.id_salle AND etat = 'libre' 
+        ORDER BY id_produit DESC
+        LIMIT 4");
           
         $res=$this->db->resultSet();
               

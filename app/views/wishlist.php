@@ -51,10 +51,12 @@
                         </div>
                         <h2 class="product-name"><a href="#"><?= $produit->titre ?></a></h2>
                         <div class="product-btns">
-                           
+
                             <a href="<?php echo URLROOT; ?>paniers/panier/<?= $produit->id_produit ?>"><button
                                     class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
                                     Cart</button></a>
+                            <a href="<?= URLROOT ?>Wishlists/deleteWish/<?= $produit->id_produit ?>"><button
+                                    class="main-btn icon-btn"><i class="fa fa-close"></i></button></a>
                         </div>
                     </div>
                 </div>

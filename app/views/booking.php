@@ -87,9 +87,9 @@
                     <h3 class="aside-title">Filter by City</h3>
                     <div class="page-filter">
                     <ul class="list-links">
-                        <li><input type="checkbox" id="city" class="city product_check" value="Nice"> Nice</li>
-                        <li><input type="checkbox" id="city" class="city product_check"  value="Paris"> Paris</li>
-                        <li><input type="checkbox" id="city" class="city product_check"  value="Bruxelles"> Bruxelles</li>
+                        <?php foreach($data['allcity'] as $city){?>
+                        <li><input type="checkbox" id="city" class="city product_check" value="<?= $city->ville ?>"> <?= $city->ville ?></li>
+                        <?php } ?>
                     </ul>
                     </div>
                 </div>
@@ -114,37 +114,7 @@
 
             <!-- MAIN -->
             <div id="main" class="col-md-9">
-                <!-- store top filter -->
-                <div class="store-filter clearfix">
-                    <div class="pull-left">
-                        <div class="sort-filter">
-                            <span class="text-uppercase">Sort By:</span>
-                            <select class="input">
-                                <option value="0">Position</option>
-                                <option value="0">Price</option>
-                                <option value="0">Rating</option>
-                            </select>
 
-                        </div>
-                    </div>
-                    <div class="pull-right">
-                        <div class="page-filter">
-                            <span class="text-uppercase">Show:</span>
-                            <select class="input">
-                                <option value="0">9</option>
-                                <option value="1">18</option>
-                                <option value="2">27</option>
-                            </select>
-                        </div>
-                        <ul class="store-pages">
-                            <li><span class="text-uppercase">Page:</span></li>
-                            <li class="active">1</li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
                 
                 <div id="store">
                    
@@ -223,8 +193,6 @@ $('.product_check').click(function(){
 
 });
 </script>
-
-
 
 
 <?php require "inc/footer.php" ;
