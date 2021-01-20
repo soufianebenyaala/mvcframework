@@ -237,7 +237,7 @@
         <!-- /row -->
 
         <?php if(isset($_SESSION['user_id']) ){ 
-            if(!empty($data['pikeforyou']) ){ ?>
+            ?>
         <!-- row -->
         <div class="row">
             <!-- section title -->
@@ -290,7 +290,7 @@
             <!-- /Product Single -->
         </div>
         <!-- /row -->
-        <?php } } ?>
+        <?php }  ?>
     </div>
     <!-- /container -->
 </div>

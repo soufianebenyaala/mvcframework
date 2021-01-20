@@ -67,8 +67,8 @@
 
                         <h2 class="product-price">$<?= $produit_detail->prix ?></h2>
                         <p><strong>Availability : </strong> <?= $produit_detail->etat ?></p>
-                        <p><strong>Arrival : </strong> <?= $produit_detail->date_arrivee ?> &nbsp &nbsp &nbsp <strong>
-                                Departure : </strong> <?= $produit_detail->date_depart ?></p>
+                        <p> <strong>Departure : </strong> <?= $produit_detail->date_depart ?> <strong>&nbsp &nbsp &nbsp Arrival : </strong> <?= $produit_detail->date_arrivee ?> 
+                                </p>
                         <p><strong>Country : </strong> <?= $produit_detail->pays ?></p>
                         <p><strong>City : </strong><?= $produit_detail->ville ?></p>
                         <p><strong>Adresse : </strong> <?= $produit_detail->addresse ?></p>
@@ -112,7 +112,7 @@
                     <div class="product-tab">
                         <ul class="tab-nav">
                             <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Reviews (3)</a></li>
+                            <li><a data-toggle="tab" href="#tab2">Reviews</a></li>
                         </ul>
                         <div class="tab-content">
                             <div id="tab1" class="tab-pane fade in active">
@@ -143,12 +143,7 @@
                                                 </div>
                                             </div>
                                             <?php } ?>
-                                            <ul class="reviews-pages">
-                                                <li class="active">1</li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                                            </ul>
+
                                         </div>
                                     </div>
                                     <?php if(isset($_SESSION['user_id'])){ ?>

@@ -107,8 +107,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($data['produitcommande'] as $object){
-                                          foreach($object as $tab){   ?>
+                            <?php if(!empty($data['produitcommande'])){
+                                foreach ($data['produitcommande'] as $object) {
+                                    foreach ($object as $tab) {   ?>
                             <tr>
                             <td class="thumb">
                                 <img src="<?php echo URLROOT; ?>public/img/salle date/<?= $tab->titre ?>/<?= $tab->photo_1 ?>" alt="">
@@ -126,7 +127,9 @@
                                 <td class="total text-center" ><strong class="primary-color">$<?= $tab->prix ?></strong></td>
 
                             </tr>
-                            <?php }} ?>
+                            <?php }
+                                }
+                            } ?>
                             
                         </tbody>
 
