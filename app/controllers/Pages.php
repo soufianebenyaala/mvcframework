@@ -15,7 +15,7 @@ class Pages extends Controller {
         
         $data['topSalle'] = $this->userModel->topSalle();
         $data['last4Offers'] = $this->userModel->last4Offers();
-        $data['pikeforyou'] = $this->userModel->pikeForYou();
+        
         $this->view('index', $data);
     }
   

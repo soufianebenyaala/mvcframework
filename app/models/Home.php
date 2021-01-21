@@ -41,7 +41,9 @@ class Home {
         ORDER BY id_produit DESC
         LIMIT 4");
 
-        $this->db->bind(':pays', $_SESSION['user_pays']);
+    $this->db->bind(':pays', $_SESSION['user_pays']);
+
+       
 
         $res=$this->db->resultSet();
               
