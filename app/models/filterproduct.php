@@ -131,7 +131,7 @@ if($category == 'all'){
               
               AND etat = 'libre'
               group by ville");
-                $this->db->bind(':id',$_SESSION['user_id']);
+               
               $res=$this->db->resultSet();
                     
               return $res;
