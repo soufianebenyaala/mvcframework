@@ -37,36 +37,70 @@ class productsajax extends Controller {
         if(!empty($this->userModel->filterproduct($data))){
         if(isset($_POST['action'])){
             foreach($this->userModel->filterproduct($data) as $tab){
-                $output .='
-                <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="product product-single">
-                        <div class="product-thumb">
-                            <ul class="product-countdown">
-                                <li><span style="margin-bottom: -17px;"><img src="'.URLROOT.'public/img/date.png"></span></li>
-                                <li><span>'. $tab->date_arrivee.'</span></li>
-                                <li><span>'. $tab->date_depart.'</span></li>
-                            </ul>
-                            <a href="'.URLROOT.'ProduitsDetails/produitdetail/'. $tab->id_produit.'"> <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
-                            view</button> </a>
-                            <img src="'.URLROOT.'public/img/salle date/'. $tab->titre.'/'. $tab->photo_1.'" alt="">
-                        </div>
-                        <div class="product-body">
-                            <h3 class="product-price">$'. $tab->prix.'</h3>
-                            <div class="product-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o empty"></i>
+                if(!isset($_SESSION['user_id'])){
+                    $output .='
+                    <div class="col-md-4 col-sm-6 col-xs-6">
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <ul class="product-countdown">
+                                    <li><span style="margin-bottom: -17px;"><img src="'.URLROOT.'public/img/date.png"></span></li>
+                                    <li><span>'. $tab->date_arrivee.'</span></li>
+                                    <li><span>'. $tab->date_depart.'</span></li>
+                                </ul>
+                                <a href="'.URLROOT.'ProduitsDetails/produitdetail/'. $tab->id_produit.'"> <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                view</button> </a>
+                                <img src="'.URLROOT.'public/img/salle date/'. $tab->titre.'/'. $tab->photo_1.'" alt="">
                             </div>
-                            <h2 class="product-name">'. $tab->titre.'</h2>
-                            <div class="product-btns">
-                            <a href="'.URLROOT.'Wishlists/addWishlist/'.$tab->id_produit.'"><button class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
+                            <div class="product-body">
+                                <h3 class="product-price">$'. $tab->prix.'</h3>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>
+                                <h2 class="product-name">'. $tab->titre.'</h2>
+                                <div class="product-btns">
+                                <a href="'.URLROOT.'users/login"><button class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                ';
+                    ';
+                }else{
+                    $output .='
+                    <div class="col-md-4 col-sm-6 col-xs-6">
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <ul class="product-countdown">
+                                    <li><span style="margin-bottom: -17px;"><img src="'.URLROOT.'public/img/date.png"></span></li>
+                                    <li><span>'. $tab->date_arrivee.'</span></li>
+                                    <li><span>'. $tab->date_depart.'</span></li>
+                                </ul>
+                                <a href="'.URLROOT.'ProduitsDetails/produitdetail/'. $tab->id_produit.'"> <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                view</button> </a>
+                                <img src="'.URLROOT.'public/img/salle date/'. $tab->titre.'/'. $tab->photo_1.'" alt="">
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">$'. $tab->prix.'</h3>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>
+                                <h2 class="product-name">'. $tab->titre.'</h2>
+                                <div class="product-btns">
+                                <a href="'.URLROOT.'Wishlists/addWishlist/'.$tab->id_produit.'"><button class="main-btn icon-btn"><i class="fa fa-heart"></i></button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    ';
+                }
+                
     
             } 
        

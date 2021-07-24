@@ -94,7 +94,10 @@ class Produitdetail {
     }
     public function getSalleAvis($id){
         //Prepared statement
-        $this->db->query('SELECT * FROM avis WHERE id_salle = :id');
+        $this->db->query('SELECT * FROM avis,membre 
+        WHERE avis.id_membre=membre.id_membre
+        AND id_salle = :id');
+
     //Bind values
         $this->db->bind(':id', $id);
                   

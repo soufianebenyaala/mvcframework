@@ -128,7 +128,7 @@
                                             <div class="single-review">
                                                 <div class="review-heading">
                                                     <div><i class="fa fa-user-o"></i>
-                                                        <?= $_SESSION['user_first_name'] ?></div>
+                                                        <?= $avis_detail->first_name  ?> <?= $avis_detail->last_name  ?></div>
                                                     <div><i class="fa fa-clock-o"></i>
                                                         <?=  $avis_detail->date_enregistrement?></div>
                                                     <div class="review-rating pull-right">
